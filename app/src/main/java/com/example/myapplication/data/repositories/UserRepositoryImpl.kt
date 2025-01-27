@@ -8,7 +8,7 @@ class UserRepositoryImpl: UserRepository {
 
 
 
-    override fun getUsers(): List<User> {
+    override suspend fun getUsers(): List<User> {
         val userDtos = listOf(
             UserDto(1, "Harry", "Potter", 13),
             UserDto(2, "Sirius", "Black", 33),

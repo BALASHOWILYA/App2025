@@ -5,6 +5,6 @@ import com.example.myapplication.domain.models.User
 
 interface UserRepository {
 
-    fun getUsers(): List<User>
+    suspend fun getUsers(): List<User>
 
 }

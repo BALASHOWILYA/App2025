@@ -1,4 +1,4 @@
-package com.example.myapplication.data
+package com.example.myapplication.data.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context

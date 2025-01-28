@@ -1,4 +1,4 @@
-package com.example.myapplication.data
+package com.example.myapplication.data.services
 
 import android.app.Service
 import android.content.Intent

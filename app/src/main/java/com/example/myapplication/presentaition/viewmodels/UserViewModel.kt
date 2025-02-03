@@ -1,5 +1,6 @@
 package com.example.myapplication.presentaition.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
@@ -18,10 +19,17 @@ class UserViewModel(private val getUsersUseCase: GetUsersUseCase) : ViewModel() 
     private val _users = MutableStateFlow<List<User>>(emptyList())
     val users: StateFlow<List<User>> = _users
 
-    fun fetchUsers() = viewModelScope.launch(IO) {
+    init {
+        fetchUsers()
+    }
 
-            val result = getUsersUseCase()
-            _users.value= result
+    private fun fetchUsers() = viewModelScope.launch {
+
+        val result = getUsersUseCase()
+
+
+        Log.d("Tag", result[0].toString())
+        _users.value= result
     }
 
 }

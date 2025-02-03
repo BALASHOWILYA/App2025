@@ -6,27 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentaition.activities.MainActivity" >
+    android:visibility="visible"
+    tools:context=".presentaition.activities.MainActivity">
 
 
     <Button
         android:id="@+id/button_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:text="@string/get_users"/>
+        android:layout_margin="8dp"
+        android:text="@string/get_users"
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/name_id"
+        android:id="@+id/surname_id"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:cursorVisible="true"
+        android:text="my users"
         android:textSize="24sp"
-        android:text="my users"/>
-
-
+        android:visibility="visible" />
 
 
 </LinearLayout>

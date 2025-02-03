@@ -49,6 +49,6 @@ class MainActivity : AppCompatActivity() {
             sb.append("${user.name}\n")
             Log.d("SecondTag",  user.toString())
         }
-        binding.nameId.text = sb.toString()
+        binding.surnameId.text = sb.toString()
     }
 }

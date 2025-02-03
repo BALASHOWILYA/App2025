@@ -1,12 +1,12 @@
 package com.example.myapplication.domain.usecases
 
-import com.example.myapplication.domain.repositories.UserRepository
+import com.example.myapplication.domain.repositories.getUsersRepository
 import com.example.myapplication.domain.models.User
 
-class GetUsersUseCase(private val userRepository: UserRepository){
+class GetUsersUseCase(private val getUsersRepository: getUsersRepository){
 
        suspend operator fun invoke(): List<User>{
-        return  userRepository.getUsers()
+        return  getUsersRepository.getUsers()
     }
 
 }

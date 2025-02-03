@@ -2,9 +2,10 @@ package com.example.myapplication.data.repositories
 
 import com.example.myapplication.data.models.UserDto
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.UserRepository
+import com.example.myapplication.domain.repositories.getUsersRepository
+import com.example.myapplication.domain.repositories.addUserRepository
 
-class UserRepositoryImpl: UserRepository {
+class getUsersRepositoryImpl: getUsersRepository, addUserRepository {
 
 
 

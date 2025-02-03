@@ -7,14 +7,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".presentaition.activities.MainActivity">
+    android:gravity="center"
+    tools:context=".presentaition.ui.activities.MainActivity">
+
 
 
     <Button
         android:id="@+id/button_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/get_users"
         android:textSize="16sp" />
 
@@ -27,6 +30,7 @@
         android:text="my users"
         android:textSize="24sp"
         android:visibility="visible" />
+
 
 
 </LinearLayout>

@@ -24,7 +24,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".presentaition.activities.MainActivity"
+            android:name=".presentaition.ui.activities.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

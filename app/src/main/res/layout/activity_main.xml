@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
-    android:gravity="center"
     tools:context=".presentaition.ui.activities.MainActivity">
 
 
@@ -30,6 +29,13 @@
         android:text="my users"
         android:textSize="24sp"
         android:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/first_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:fitsSystemWindows="true"/>
 
 
 

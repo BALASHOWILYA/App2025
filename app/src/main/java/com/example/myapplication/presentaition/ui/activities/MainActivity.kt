@@ -2,10 +2,12 @@ package com.example.myapplication.presentaition.ui.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.myapplication.R
 import com.example.myapplication.data.repositories.getUsersRepositoryImpl
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
@@ -24,11 +26,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userProfileFragment = UserProfileFragment()
+        val userProfileFragment: UserProfileFragment = UserProfileFragment()
 
         val userRepository = getUsersRepositoryImpl()
         val getUsersUseCase = GetUsersUseCase(userRepository)
         val viewModelFactory = UserViewModelFactory(getUsersUseCase)
+
+
+        addFragment(userProfileFragment,R.id.first_fragment_container, savedInstanceState);
+
 
         userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
         binding.buttonId.setOnClickListener{
@@ -41,12 +47,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFragment(fragment: Fragment, containerId: Int) {
-        if (supportFragmentManager.findFragmentById(containerId) == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(containerId, fragment)
-                .commitAllowingStateLoss()
+    private fun addFragment(fragment: Fragment, containerId: Int?, savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            if (supportFragmentManager.findFragmentById(containerId!!) == null) {
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(containerId, fragment)
+                    .commitAllowingStateLoss()
+            }
         }
     }
 

@@ -11,14 +11,18 @@ import com.example.myapplication.R
 import com.example.myapplication.data.repositories.getUsersRepositoryImpl
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
+import com.example.myapplication.domain.usecases.AddUserUseCase
 import com.example.myapplication.domain.usecases.GetUsersUseCase
 import com.example.myapplication.presentaition.ui.fragments.UserProfileFragment
+import com.example.myapplication.presentaition.viewmodelfactories.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodelfactories.UserViewModelFactory
+import com.example.myapplication.presentaition.viewmodels.AddUserViewModel
 import com.example.myapplication.presentaition.viewmodels.UserViewModel
 
 @Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
+    private lateinit var addUserViewModel: AddUserViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +33,26 @@ class MainActivity : AppCompatActivity() {
         val userProfileFragment: UserProfileFragment = UserProfileFragment()
 
         val userRepository = getUsersRepositoryImpl()
+        val addUserUseCase = AddUserUseCase(userRepository)
         val getUsersUseCase = GetUsersUseCase(userRepository)
         val viewModelFactory = UserViewModelFactory(getUsersUseCase)
+        val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
 
 
-        addFragment(userProfileFragment,R.id.first_fragment_container, savedInstanceState);
 
 
         userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
+        addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
+
         binding.buttonId.setOnClickListener{
+            val name = binding.editNameId.text.toString()
+            val surname = binding.editSurnameId.text.toString()
+            val age = binding.editAgeId.text.toString()
+
+            if(name.isNotEmpty() && surname.isNotEmpty() && age.isNotEmpty()){
+
+                addUserViewModel.addUser(User(name = name, surname = surname, age= age.toInt()))
+            }
             lifecycleScope.launchWhenResumed {
 
                 userViewModel.users.collect() { users ->

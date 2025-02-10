@@ -9,6 +9,30 @@
     android:visibility="visible"
     tools:context=".presentaition.ui.activities.MainActivity">
 
+    <EditText
+        android:id="@+id/edit_name_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type name: "
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_surname_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type surname: "
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_age_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type age: "
+        android:textSize="16sp"/>
+
 
 
     <Button
@@ -30,12 +54,7 @@
         android:textSize="24sp"
         android:visibility="visible" />
 
-    <FrameLayout
-        android:id="@+id/first_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="12"
-        android:fitsSystemWindows="true"/>
+
 
 
 

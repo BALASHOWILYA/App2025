@@ -1,5 +1,6 @@
 package com.example.myapplication.data.repositories
 
+import android.util.Log
 import com.example.myapplication.data.models.UserDto
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.repositories.getUsersRepository
@@ -27,5 +28,6 @@ class getUsersRepositoryImpl: getUsersRepository, addUserRepository {
 
     override suspend fun addUser(user: User) {
         listUsers.add(UserDto(id=3, name = user.name, surname = user.surname, age = user.age))
+        Log.d("add","added successful")
     }
 }

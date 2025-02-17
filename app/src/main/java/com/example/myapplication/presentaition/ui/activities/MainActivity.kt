@@ -2,7 +2,6 @@ package com.example.myapplication.presentaition.ui.activities
 
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val userProfileFragment: UserProfileFragment = UserProfileFragment()
-
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        addFragment(userProfileFragment, fragment)
         val userRepository = getUsersRepositoryImpl()
         val addUserUseCase = AddUserUseCase(userRepository)
         val getUsersUseCase = GetUsersUseCase(userRepository)
@@ -62,15 +62,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFragment(fragment: Fragment, containerId: Int?, savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-            if (supportFragmentManager.findFragmentById(containerId!!) == null) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .add(containerId, fragment)
-                    .commitAllowingStateLoss()
-            }
+    private fun addFragment(fragment: Fragment, containerId: Fragment?) {
+
+        if (containerId == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commitAllowingStateLoss()
+
         }
+
     }
 
     private fun replaceFragment(fragment: Fragment, containerId: Int) {

@@ -12,7 +12,9 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.AddUserUseCase
 import com.example.myapplication.domain.usecases.GetUsersUseCase
+import com.example.myapplication.presentaition.ui.fragments.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.UserProfileFragment
+import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
 import com.example.myapplication.presentaition.viewmodelfactories.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodelfactories.UserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.AddUserViewModel
@@ -25,13 +27,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportFragmentManager.fragmentFactory = MFragmentFactory("first fragment", 1)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userProfileFragment: UserProfileFragment = UserProfileFragment()
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        addFragment(userProfileFragment, fragment)
+        if(savedInstanceState == null){
+            addFragment(RegistrationFragment::class.java.toString())
+        }
+
         val userRepository = getUsersRepositoryImpl()
         val addUserUseCase = AddUserUseCase(userRepository)
         val getUsersUseCase = GetUsersUseCase(userRepository)
@@ -62,35 +66,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFragment(fragment: Fragment, containerId: Fragment?) {
-
-        if (containerId == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commitAllowingStateLoss()
-
-        }
-
+    private fun addFragment(fragmentName: String,) {
+        val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, fragmentName)
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container, fragment)
+            .commitAllowingStateLoss()
     }
 
-    private fun replaceFragment(fragment: Fragment, containerId: Int) {
-        if (supportFragmentManager.findFragmentById(containerId) == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(containerId, fragment)
-                .commitAllowingStateLoss()
-        }
+    fun replaceFragment(fragmentName: String,) {
+        val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, fragmentName)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commitAllowingStateLoss()
     }
 
-    private fun removeFragment(fragment: Fragment, containerId: Int) {
-        if (supportFragmentManager.findFragmentById(containerId) == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .remove(fragment)
-                .commitAllowingStateLoss()
-        }
-    }
 
     private fun displayUsers(users: List<User>){
         val sb = StringBuilder()

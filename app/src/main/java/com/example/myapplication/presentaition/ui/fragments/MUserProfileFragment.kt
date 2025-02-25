@@ -35,9 +35,7 @@ class MUserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_id).setOnClickListener{
-            (activity as? MainActivity)?.replaceFragment(RegistrationFragment::class.java.toString())
-        }
+
 
     }
     companion object {

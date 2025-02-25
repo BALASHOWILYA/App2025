@@ -1,6 +1,7 @@
 package com.example.myapplication.presentaition.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,8 +38,38 @@ class MUserProfileFragment : Fragment() {
         return binding.root
     }
 
+    private fun replaceFragment(fragmentName: String) {
+        // Проверка, что fragmentName не пустой
+        if (fragmentName.isEmpty()) {
+            throw IllegalArgumentException("Fragment name cannot be empty")
+        }
+
+        try {
+            // Создание фрагмента
+            val fragment = requireActivity().supportFragmentManager.fragmentFactory
+                .instantiate(requireActivity().classLoader, fragmentName)
+
+            // Замена фрагмента
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_id, fragment)
+                .addToBackStack(null) // Добавление транзакции в back stack
+                .commitAllowingStateLoss() // Подтверждение транзакции
+        } catch (e: Fragment.InstantiationException) {
+            // Обработка ошибки
+            e.printStackTrace()
+            throw RuntimeException("Failed to instantiate fragment: $fragmentName", e)
+        }
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.signUpBtn.setOnClickListener{
+            Log.d("ButtenTag", "pressed")
+            replaceFragment(RegistrationFragment::class.java.name) // Используем .name для получения полного имени класса
+        }
 
 
 

@@ -15,8 +15,9 @@
         android:textSize="48sp"
         android:text="@string/my_profile" />
 
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/sign_up_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

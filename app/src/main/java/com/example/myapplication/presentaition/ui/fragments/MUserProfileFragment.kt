@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.example.myapplication.R
-import com.example.myapplication.presentaition.ui.activities.MainActivity
+import com.example.myapplication.databinding.FragmentUserProfileBinding
+
 
 private const val ARG_NUMBER = "arg_number"
 
@@ -15,6 +16,9 @@ class MUserProfileFragment : Fragment() {
 
 
     private var number: Int? = null
+    private var _binding: FragmentUserProfileBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +31,10 @@ class MUserProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_profile, container, false)
+        _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

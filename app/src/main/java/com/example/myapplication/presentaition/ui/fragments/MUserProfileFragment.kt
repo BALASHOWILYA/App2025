@@ -11,7 +11,7 @@ import com.example.myapplication.presentaition.ui.activities.MainActivity
 
 private const val ARG_NUMBER = "arg_number"
 
-class UserProfileFragment : Fragment() {
+class MUserProfileFragment : Fragment() {
 
 
     private var number: Int? = null

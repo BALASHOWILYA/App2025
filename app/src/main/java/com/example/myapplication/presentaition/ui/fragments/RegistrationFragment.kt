@@ -1,13 +1,15 @@
 package com.example.myapplication.presentaition.ui.fragments
 
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.Fragment
 import com.example.myapplication.R
-import com.example.myapplication.presentaition.ui.activities.MainActivity
+import com.example.myapplication.databinding.FragmentRegistrationBinding
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +23,10 @@ private const val ARG_TEXT = "text"
  */
 class RegistrationFragment : Fragment() {
     // TODO: Rename and change types of parameters
+
     private var text: String? = null
+    private var _binding: FragmentRegistrationBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,17 +40,45 @@ class RegistrationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration, container, false)
+    ): View {
+
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+
+    private fun replaceFragment(fragmentName: String) {
+        // Проверка, что fragmentName не пустой
+        if (fragmentName.isEmpty()) {
+            throw IllegalArgumentException("Fragment name cannot be empty")
+        }
+
+        try {
+            // Создание фрагмента
+            val fragment = requireActivity().supportFragmentManager.fragmentFactory
+                .instantiate(requireActivity().classLoader, fragmentName)
+
+            // Замена фрагмента
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_id, fragment)
+                .addToBackStack(null) // Добавление транзакции в back stack
+                .commitAllowingStateLoss() // Подтверждение транзакции
+        } catch (e: Fragment.InstantiationException) {
+            // Обработка ошибки
+            e.printStackTrace()
+            throw RuntimeException("Failed to instantiate fragment: $fragmentName", e)
+        }
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        view.findViewById<Button>(R.id.button_id).setOnClickListener{
-            (activity as? MainActivity)?.replaceFragment(UserProfileFragment::class.java.toString())
+        binding.profileBtnId.setOnClickListener {
+            Log.d("ButtenTag", "pressed")
+            replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
         }
     }
 

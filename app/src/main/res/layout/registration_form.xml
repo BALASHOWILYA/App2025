@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edit_name_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type name: "
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_surname_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type surname: "
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_age_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="type age: "
+        android:textSize="16sp"/>
+
+
+
+    <Button
+        android:id="@+id/button_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/get_users"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/surname_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:cursorVisible="true"
+        android:text="my users"
+        android:textSize="24sp"
+        android:visibility="visible" />
+
+</LinearLayout>

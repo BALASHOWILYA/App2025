@@ -36,9 +36,11 @@ android {
     viewBinding{
         enable = true
     }
+
 }
 
 dependencies {
+    val room_version = "2.6.1"
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.core.ktx)
@@ -49,4 +51,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+
+
 }

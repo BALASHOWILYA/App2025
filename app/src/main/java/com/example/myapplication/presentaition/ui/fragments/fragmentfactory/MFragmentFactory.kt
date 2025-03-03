@@ -2,8 +2,8 @@ package com.example.myapplication.presentaition.ui.fragments.fragmentfactory
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.example.myapplication.presentaition.ui.fragments.RegistrationFragment
-import com.example.myapplication.presentaition.ui.fragments.MUserProfileFragment
+import com.example.myapplication.presentaition.ui.fragments.common.RegistrationFragment
+import com.example.myapplication.presentaition.ui.fragments.common.MUserProfileFragment
 
 class MFragmentFactory(private val text: String, private val number: Int): FragmentFactory() {
 

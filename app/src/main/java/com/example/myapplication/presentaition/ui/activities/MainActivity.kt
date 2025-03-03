@@ -9,7 +9,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.AddUserUseCase
 import com.example.myapplication.domain.usecases.GetUsersUseCase
-import com.example.myapplication.presentaition.ui.fragments.RegistrationFragment
+import com.example.myapplication.presentaition.ui.fragments.common.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
 import com.example.myapplication.presentaition.viewmodelfactories.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodelfactories.UserViewModelFactory

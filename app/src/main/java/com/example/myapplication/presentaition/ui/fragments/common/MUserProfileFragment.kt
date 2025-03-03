@@ -1,4 +1,4 @@
-package com.example.myapplication.presentaition.ui.fragments
+package com.example.myapplication.presentaition.ui.fragments.common
 
 import android.os.Bundle
 import android.util.Log
@@ -6,12 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentUserProfileBinding
 
-
-private const val ARG_NUMBER = "arg_number"
 
 class MUserProfileFragment : Fragment() {
 
@@ -76,6 +73,7 @@ class MUserProfileFragment : Fragment() {
     }
     companion object {
 
+        private const val ARG_NUMBER = "arg_number"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

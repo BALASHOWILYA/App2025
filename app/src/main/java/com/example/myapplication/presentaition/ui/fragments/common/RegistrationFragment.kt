@@ -1,4 +1,4 @@
-package com.example.myapplication.presentaition.ui.fragments
+package com.example.myapplication.presentaition.ui.fragments.common
 
 
 import android.os.Bundle
@@ -9,11 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRegistrationBinding
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_TEXT = "text"
 
 
 /**
@@ -83,6 +78,9 @@ class RegistrationFragment : Fragment() {
     }
 
     companion object {
+        // TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private const val ARG_TEXT = "text"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

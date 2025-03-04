@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.data.repositories.getUsersRepositoryImpl
+import com.example.myapplication.data.application.MyApplication
+import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
+import com.example.myapplication.data.databases.roomdatabase.repositories.UsersRepositoryImpl
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.AddUserUseCase
@@ -32,17 +34,19 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(RegistrationFragment::class.java.toString())
         }
 
-        val userRepository = getUsersRepositoryImpl()
-        val addUserUseCase = AddUserUseCase(userRepository)
+        // Get the Application context properly
+        val app = applicationContext as MyApplication
+        val userRepository = app.usersRepositoryImpl
+        //val addUserUseCase = AddUserUseCase(userRepository)
         val getUsersUseCase = GetUsersUseCase(userRepository)
         val viewModelFactory = UserViewModelFactory(getUsersUseCase)
-        val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
+        //val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
 
 
 
 
         userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
-        addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
+        //addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
         /*
         binding.buttonId.setOnClickListener{
             val name = binding.editNameId.text.toString()

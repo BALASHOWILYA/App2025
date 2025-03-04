@@ -7,4 +7,5 @@
     <string name="my_profile">my profile</string>
     <string name="press_me">press me</string>
     <string name="my_registration">my registration</string>
+    <string name="type_phone_number">Введите ваш номер телефона:</string>
 </resources>

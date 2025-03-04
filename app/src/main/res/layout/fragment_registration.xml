@@ -8,7 +8,15 @@
     tools:context=".presentaition.ui.fragments.common.RegistrationFragment">
 
 
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:hint="@string/type_phone_number"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        android:layout_margin="16dp"
+        android:textSize="36sp" />
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

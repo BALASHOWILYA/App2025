@@ -8,4 +8,6 @@
     <string name="press_me">press me</string>
     <string name="my_registration">my registration</string>
     <string name="type_phone_number">Введите ваш номер телефона:</string>
+    <string name="type_username">Введите имя пользователя:</string>
+    <string name="type_age">Введите возраст:</string>
 </resources>

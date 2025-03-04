@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
-import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
-import com.example.myapplication.data.databases.roomdatabase.repositories.UsersRepositoryImpl
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.AddUserUseCase
@@ -36,35 +34,12 @@ class MainActivity : AppCompatActivity() {
 
         // Get the Application context properly
         val app = applicationContext as MyApplication
-        val userRepository = app.usersRepositoryImpl
-        //val addUserUseCase = AddUserUseCase(userRepository)
-        val getUsersUseCase = GetUsersUseCase(userRepository)
+        val getUserRepository = app.getUsersRepositoryImpl
+        val addUserRepository = app.addUserRepositoryImpl
+        val addUserUseCase = AddUserUseCase(addUserRepository)
+        val getUsersUseCase = GetUsersUseCase(getUserRepository)
         val viewModelFactory = UserViewModelFactory(getUsersUseCase)
-        //val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
 
-
-
-
-        userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
-        //addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
-        /*
-        binding.buttonId.setOnClickListener{
-            val name = binding.editNameId.text.toString()
-            val surname = binding.editSurnameId.text.toString()
-            val age = binding.editAgeId.text.toString()
-
-            if(name.isNotEmpty() && surname.isNotEmpty() && age.isNotEmpty()){
-
-                addUserViewModel.addUser(User(name = name, surname = surname, age= age.toInt()))
-            }
-            lifecycleScope.launchWhenResumed {
-
-                userViewModel.users.collect() { users ->
-                    displayUsers(users)
-                }
-            }
-        }
-        */
 
     }
 
@@ -85,15 +60,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun displayUsers(users: List<User>){
-        /*
-        val sb = StringBuilder()
-        users.forEach{
-            user ->
-            sb.append("${user.name}\n")
-            Log.d("SecondTag",  user.toString())
-        }
-        binding.surnameId.text = sb.toString()
-        */
-    }
+
 }

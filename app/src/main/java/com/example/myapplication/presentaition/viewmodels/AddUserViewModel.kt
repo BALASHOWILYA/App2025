@@ -12,5 +12,6 @@ class AddUserViewModel(private val addUserUseCase: AddUserUseCase) : ViewModel()
 
     fun addUser(user: User) = viewModelScope.launch {
         addUserUseCase(user = user)
+
     }
 }

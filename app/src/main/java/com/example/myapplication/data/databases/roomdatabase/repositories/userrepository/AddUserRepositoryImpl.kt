@@ -4,9 +4,9 @@ import android.util.Log
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.data.databases.roomdatabase.models.UserDto
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.addUserRepository
+import com.example.myapplication.domain.repositories.AddUserRepository
 
-class AddUserRepositoryImpl(private val database: AppRoomDatabase): addUserRepository {
+class AddUserRepositoryImpl(private val database: AppRoomDatabase): AddUserRepository {
 
     private  val userDao = database.userDao()
 
@@ -14,4 +14,5 @@ class AddUserRepositoryImpl(private val database: AppRoomDatabase): addUserRepos
         userDao.insertUser(UserDto(username = user.username, password = user.password, age = user.age, phoneNumber = user.phoneNumber))
         Log.d("add","added successful")
     }
+
 }

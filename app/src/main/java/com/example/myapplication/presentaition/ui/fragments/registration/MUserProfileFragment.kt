@@ -1,4 +1,4 @@
-package com.example.myapplication.presentaition.ui.fragments.common
+package com.example.myapplication.presentaition.ui.fragments.registration
 
 import android.os.Bundle
 import android.util.Log

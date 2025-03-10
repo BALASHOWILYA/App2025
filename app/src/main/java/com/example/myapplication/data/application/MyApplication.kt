@@ -4,12 +4,12 @@ import android.app.Application
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.AddUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetUsersRepositoryImpl
-import com.example.myapplication.domain.repositories.addUserRepository
-import com.example.myapplication.domain.repositories.getUsersRepository
+import com.example.myapplication.domain.repositories.AddUserRepository
+import com.example.myapplication.domain.repositories.GetUsersRepository
 
 class MyApplication: Application() {
 
    private val database: AppRoomDatabase by lazy { AppRoomDatabase.getInstance(this) }
-   val getUsersRepositoryImpl: getUsersRepository  by lazy { GetUsersRepositoryImpl(database) }
-   val addUserRepositoryImpl: addUserRepository by lazy { AddUserRepositoryImpl(database) }
+   val getUsersRepositoryImpl: GetUsersRepository by lazy { GetUsersRepositoryImpl(database) }
+   val addUserRepositoryImpl: AddUserRepository by lazy { AddUserRepositoryImpl(database) }
 }

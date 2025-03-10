@@ -1,11 +1,11 @@
 package com.example.myapplication.data.databases.roomdatabase.repositories.userrepository
 
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
+
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.getUsersRepository
+import com.example.myapplication.domain.repositories.GetUsersRepository
 
-
-class GetUsersRepositoryImpl(private val database: AppRoomDatabase): getUsersRepository {
+class GetUsersRepositoryImpl(private val database: AppRoomDatabase): GetUsersRepository {
 
     private  val userDao = database.userDao()
 
@@ -22,4 +22,7 @@ class GetUsersRepositoryImpl(private val database: AppRoomDatabase): getUsersRep
             )
         }
     }
+
+
+
 }

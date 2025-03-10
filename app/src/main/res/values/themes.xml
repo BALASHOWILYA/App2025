@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+
+    <style name="Button.White" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/holo_purple</item>
+    </style>
+
 </resources>

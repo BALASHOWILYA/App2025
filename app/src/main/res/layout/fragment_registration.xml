@@ -73,7 +73,7 @@
         android:textColorHint="@color/white"
         android:layout_weight="1"
         android:textColor="@color/white"
-        android:inputType="text"
+        android:inputType="number"
         android:layout_margin="16dp"
         android:textSize="18sp" />
 

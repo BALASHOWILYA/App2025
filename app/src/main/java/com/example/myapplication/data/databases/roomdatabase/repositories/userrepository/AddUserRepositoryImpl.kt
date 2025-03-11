@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.data.databases.roomdatabase.models.UserDto
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.AddUserRepository
+import com.example.myapplication.domain.repositories.userrepository.AddUserRepository
 
 class AddUserRepositoryImpl(private val database: AppRoomDatabase): AddUserRepository {
 

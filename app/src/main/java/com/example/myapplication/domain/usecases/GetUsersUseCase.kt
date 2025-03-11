@@ -1,6 +1,6 @@
 package com.example.myapplication.domain.usecases
 
-import com.example.myapplication.domain.repositories.GetUsersRepository
+import com.example.myapplication.domain.repositories.userrepository.GetUsersRepository
 import com.example.myapplication.domain.models.User
 
 class GetUsersUseCase(private val getUsersRepository: GetUsersRepository){

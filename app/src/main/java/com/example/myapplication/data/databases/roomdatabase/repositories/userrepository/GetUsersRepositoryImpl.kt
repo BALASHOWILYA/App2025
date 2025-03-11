@@ -3,7 +3,7 @@ package com.example.myapplication.data.databases.roomdatabase.repositories.userr
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.GetUsersRepository
+import com.example.myapplication.domain.repositories.userrepository.GetUsersRepository
 
 class GetUsersRepositoryImpl(private val database: AppRoomDatabase): GetUsersRepository {
 

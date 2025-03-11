@@ -13,7 +13,9 @@ import com.example.myapplication.databinding.FragmentUserProfileBinding
 class MUserProfileFragment : Fragment() {
 
 
-    private var number: Int? = null
+    private var age: Int? = null
+    private var username: String? = null
+    private var email: String? = null
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -21,7 +23,9 @@ class MUserProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            number = it.getInt(ARG_NUMBER)
+            age = it.getInt(ARG_AGE)
+            username = it.getString(ARG_PROFILE_NAME)
+            email = it.getString(ARG_EMAIL)
 
         }
     }
@@ -63,17 +67,16 @@ class MUserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.signUpBtn.setOnClickListener{
-            Log.d("ButtenTag", "pressed")
-            replaceFragment(RegistrationFragment::class.java.name) // Используем .name для получения полного имени класса
-        }
+
 
 
 
     }
     companion object {
 
-        private const val ARG_NUMBER = "arg_number"
+        private const val ARG_PROFILE_NAME = "arg_username"
+        private const val ARG_EMAIL = "arg_email"
+        private const val ARG_AGE = "arg_age"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
@@ -84,10 +87,10 @@ class MUserProfileFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(number: Int) =
+        fun newInstance() =
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_NUMBER,number)
+
 
                 }
             }

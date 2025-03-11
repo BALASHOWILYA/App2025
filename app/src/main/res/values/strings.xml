@@ -11,4 +11,9 @@
     <string name="type_password">Введите пароль: </string>
     <string name="type_username">Введите имя пользователя: </string>
     <string name="type_age">Введите возраст: </string>
+    <string name="username_text">Пользователь:</string>
+    <string name="age_id">Возраст:</string>
+    <string name="_18">18</string>
+    <string name="profile_email">Мой почта</string>
+    <string name="profile_username">Имя пользователя</string>
 </resources>

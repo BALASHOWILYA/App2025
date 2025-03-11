@@ -11,7 +11,7 @@ import com.example.myapplication.data.databases.roomdatabase.models.UserDto
 import com.example.myapplication.data.databases.roomdatabase.roomdao.StudentDao
 import com.example.myapplication.data.databases.roomdatabase.roomdao.TeacherDao
 
-@Database(entities = [UserDto::class, StudentDto::class, TeacherDto::class], version = 3)
+@Database(entities = [UserDto::class, StudentDto::class, TeacherDto::class], version = 7)
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

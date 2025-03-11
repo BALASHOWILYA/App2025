@@ -1,29 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".presentaition.ui.fragments.registration.MUserProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="2"
-        android:textSize="48sp"
-        android:text="@string/my_profile" />
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            tools:src="@drawable/orig" />
+
+        <TextView
+            android:id="@+id/profile_name_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="@string/profile_username" />
 
 
-    <Button
-        android:id="@+id/sign_up_btn"
-        android:layout_width="match_parent"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="48sp"
-        android:layout_margin="16dp"
-        android:text="@string/press_me" />
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="@string/age_id" />
+
+        <TextView
+            android:id="@+id/profile_age_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="@string/_18" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/profile_email_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="@string/profile_email" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
 
 </LinearLayout>

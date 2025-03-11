@@ -1,11 +1,9 @@
-package com.example.myapplication.presentaition.viewmodelfactories
+package com.example.myapplication.presentaition.viewmodelfactories.userfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.domain.usecases.AddUserUseCase
-import com.example.myapplication.domain.usecases.GetUsersUseCase
-import com.example.myapplication.presentaition.viewmodels.AddUserViewModel
-import com.example.myapplication.presentaition.viewmodels.UserViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 
 @Suppress("UNCHECKED_CAST")
 class AddUserViewModelFactory(private val addUserUseCase: AddUserUseCase): ViewModelProvider.Factory {

@@ -8,15 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.AddUserUseCase
-import com.example.myapplication.presentaition.viewmodelfactories.AddUserViewModelFactory
-import com.example.myapplication.presentaition.viewmodels.AddUserViewModel
-import com.example.myapplication.presentaition.viewmodels.UserViewModel
+import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
+import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
 
 
 /**
@@ -37,7 +37,6 @@ class RegistrationFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            text = it.getString(ARG_TEXT)
 
         }
     }
@@ -83,17 +82,21 @@ class RegistrationFragment : Fragment() {
 
         val app = requireActivity().applicationContext as MyApplication
         val addUserRepository = app.addUserRepositoryImpl
+
         val addUserUseCase = AddUserUseCase(addUserRepository)
         val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
+
         addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
 
+        requireActivity().supportFragmentManager.fragmentFactory = MFragmentFactory("Username", "balashov4ilya@gmail.com", 25)
+
         binding.profileBtnId.setOnClickListener {
+
             Log.d("ButtenTag", "pressed")
             val name = binding.editUsernameId.text.toString()
             val password = binding.editPasswordId.text.toString()
             val phoneNumber = binding.editPhoneNumberId.toString()
             val age = binding.editAgeId.text.toString()
-
 
             if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
 
@@ -107,25 +110,18 @@ class RegistrationFragment : Fragment() {
 
 
     companion object {
-        // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_TEXT = "text"
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistrationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+        private const val ARG_PROFILE_NAME = "arg_username"
+        private const val ARG_EMAIL = "arg_email"
+        private const val ARG_AGE = "arg_age"
+
         @JvmStatic
-        fun newInstance(text: String) =
+        fun newInstance(profileName: String, email: String, age: Int) =
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_TEXT,text)
-
-
+                    putString(ARG_PROFILE_NAME,profileName)
+                    putString(ARG_EMAIL,email)
+                    putInt(ARG_AGE,age)
                 }
             }
     }

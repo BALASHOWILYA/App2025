@@ -27,7 +27,7 @@
         android:textColorHint="@color/white"
         android:hint="@string/type_username"
         android:importantForAutofill="no"
-        android:inputType="phone"
+        android:inputType="text"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:layout_weight="1"
@@ -58,9 +58,10 @@
         android:importantForAutofill="no"
         android:layout_weight="1"
         android:textColor="@color/white"
-        android:inputType="phone"
+        android:inputType="number"
         android:layout_margin="16dp"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/edit_age_id"

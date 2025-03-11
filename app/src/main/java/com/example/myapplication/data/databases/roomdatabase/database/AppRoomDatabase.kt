@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.myapplication.data.databases.roomdatabase.roomdao.UserDao
 import com.example.myapplication.data.databases.roomdatabase.models.UserDto
 
-@Database(entities = [UserDto::class], version = 1)
+@Database(entities = [UserDto::class], version = 2)
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -24,7 +24,7 @@ abstract class AppRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppRoomDatabase::class.java,
                     "app_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }

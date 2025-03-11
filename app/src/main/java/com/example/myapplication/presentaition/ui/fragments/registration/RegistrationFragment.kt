@@ -90,16 +90,17 @@ class RegistrationFragment : Fragment() {
         binding.profileBtnId.setOnClickListener {
             Log.d("ButtenTag", "pressed")
             val name = binding.editUsernameId.text.toString()
-            val surname = binding.editPasswordId.text.toString()
+            val password = binding.editPasswordId.text.toString()
+            val phoneNumber = binding.editPhoneNumberId.toString()
             val age = binding.editAgeId.text.toString()
-            val phoneNumber = binding.editPhoneNumberId.text.toString()
 
 
-            if(name.isNotEmpty() && surname.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
+            if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
 
-                addUserViewModel.addUser(User(username = name, password = surname, phoneNumber = phoneNumber.toInt(), age = age.toInt()))
+                addUserViewModel.addUser(User(username = name, password = password, phoneNumber = phoneNumber, age = age.toInt()))
+                replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
             }
-            replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
+
         }
 
     }
@@ -123,6 +124,7 @@ class RegistrationFragment : Fragment() {
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_TEXT,text)
+
 
                 }
             }

@@ -2,7 +2,7 @@ package com.example.myapplication.presentaition.viewmodelfactories.userfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.domain.usecases.AddUserUseCase
+import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 
 @Suppress("UNCHECKED_CAST")

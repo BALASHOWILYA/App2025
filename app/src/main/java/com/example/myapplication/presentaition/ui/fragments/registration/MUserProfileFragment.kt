@@ -8,25 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentUserProfileBinding
+import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment.Companion
 
 
 class MUserProfileFragment : Fragment() {
 
 
+
     private var age: Int? = null
     private var username: String? = null
-    private var email: String? = null
+    private var phone: String? = null
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            age = it.getInt(ARG_AGE)
-            username = it.getString(ARG_PROFILE_NAME)
-            email = it.getString(ARG_EMAIL)
 
+        arguments?.let {
+            age = it.getInt(savedInstanceState?.getString(ARG_AGE)) ?: 0
+            username = it.getString(savedInstanceState?.getString(ARG_PROFILE_NAME)) ?: ""
+            phone = it.getString(savedInstanceState?.getString(ARG_PHONE_NUMBER)) ?: ""
         }
     }
 
@@ -68,31 +70,27 @@ class MUserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.apply {
+            profileAgeId.text = age.toString()
+            profileEmailId.text = phone
+            profileNameId.text = username
+
+        }
+
 
 
 
     }
     companion object {
+        const val ARG_PROFILE_NAME = "arg_username"
+        const val ARG_PHONE_NUMBER = "arg_phonenumber"
+        const val ARG_AGE = "arg_age"
 
-        private const val ARG_PROFILE_NAME = "arg_username"
-        private const val ARG_EMAIL = "arg_email"
-        private const val ARG_AGE = "arg_age"
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistrationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance() =
             RegistrationFragment().apply {
-                arguments = Bundle().apply {
 
-
-                }
             }
     }
 

@@ -12,8 +12,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.usecases.AddUserUseCase
-import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
+import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
 import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
@@ -88,7 +87,7 @@ class RegistrationFragment : Fragment() {
 
         addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
 
-        requireActivity().supportFragmentManager.fragmentFactory = MFragmentFactory("Username", "balashov4ilya@gmail.com", 25)
+
 
         binding.profileBtnId.setOnClickListener {
 
@@ -99,7 +98,9 @@ class RegistrationFragment : Fragment() {
             val age = binding.editAgeId.text.toString()
 
             if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
-
+                savedInstanceState?.putString(ARG_PROFILE_NAME, name)
+                savedInstanceState?.putString(ARG_PHONE_NUMBER, phoneNumber)
+                savedInstanceState?.putString(ARG_AGE, age)
                 addUserViewModel.addUser(User(username = name, password = password, phoneNumber = phoneNumber, age = age.toInt()))
                 replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
             }
@@ -111,17 +112,17 @@ class RegistrationFragment : Fragment() {
 
     companion object {
 
-        private const val ARG_PROFILE_NAME = "arg_username"
-        private const val ARG_EMAIL = "arg_email"
-        private const val ARG_AGE = "arg_age"
+        const val ARG_PROFILE_NAME = "arg_username"
+        const val ARG_PHONE_NUMBER = "arg_phonenumber"
+        const val ARG_AGE = "arg_age"
 
         @JvmStatic
-        fun newInstance(profileName: String, email: String, age: Int) =
+        fun newInstance(profileName: String, phone: String, age: Int) =
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PROFILE_NAME,profileName)
-                    putString(ARG_EMAIL,email)
-                    putInt(ARG_AGE,age)
+                    putString(MUserProfileFragment.ARG_PROFILE_NAME,profileName)
+                    putString(MUserProfileFragment.ARG_PHONE_NUMBER,phone)
+                    putInt(MUserProfileFragment.ARG_AGE,age)
                 }
             }
     }

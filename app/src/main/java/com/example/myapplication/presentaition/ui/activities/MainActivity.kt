@@ -2,17 +2,10 @@ package com.example.myapplication.presentaition.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.usecases.GetUsersUseCase
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
-import com.example.myapplication.presentaition.viewmodelfactories.userfactory.UserViewModelFactory
-import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
-import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
 
 @Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class MainActivity : AppCompatActivity() {

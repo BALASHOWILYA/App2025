@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.usecases.GetUsersUseCase
+import com.example.myapplication.domain.usecases.userusecase.GetUsersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

@@ -19,6 +19,8 @@ class GetCourseViewModel(private val getCoursesUseCase:  GetCoursesUseCase) : Vi
         fetchCourses()
     }
 
+
+
     private fun fetchCourses() = viewModelScope.launch {
 
         val result = getCoursesUseCase()

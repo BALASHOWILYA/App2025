@@ -9,9 +9,9 @@ class GetCoursesRepositoryImpl(private val database: AppRoomDatabase): IGetCours
     private val courseDao = database.courseDao()
 
     override suspend fun getCourses(): List<Course> {
-        val listUsers = courseDao.getAllCourses()
+        val listCourses = courseDao.getAllCourses()
 
-        return listUsers.map{ dto ->
+        return listCourses.map{ dto ->
             Course(
                 coursePicture = dto.coursePicture,
                 name = dto.name,

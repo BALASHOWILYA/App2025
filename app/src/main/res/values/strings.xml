@@ -19,4 +19,7 @@
     <string name="type_intro">Краткое описание</string>
     <string name="type_course">Название курса</string>
     <string name="button_text_course">Посмотреть курсы</string>
+    <string name="type_course_name">Введите название курса:</string>
+    <string name="type_course_intro">Введите краткое описание:</string>
+    <string name="type_course_description">Введите подробное описание курса:</string>
 </resources>

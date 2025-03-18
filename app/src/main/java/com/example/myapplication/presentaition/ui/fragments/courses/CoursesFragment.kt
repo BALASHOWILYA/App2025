@@ -1,6 +1,5 @@
-package com.example.myapplication.presentaition.ui.fragments.showcourses
+package com.example.myapplication.presentaition.ui.fragments.courses
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,24 +10,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.FragmentCoursesBinding
-import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase
-import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
 import com.example.myapplication.presentaition.ui.adapters.ItemCourseAdapter
 import com.example.myapplication.presentaition.viewmodelfactories.coursefactory.GetCourseViewModelFactory
-import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
-import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 import kotlinx.coroutines.launch
 
 
 class CoursesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private var _binding: FragmentCoursesBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: ItemCourseAdapter
@@ -61,12 +53,27 @@ class CoursesFragment : Fragment() {
 
         getCourseViewModel = ViewModelProvider(this, getCoursesViewModelFactory)[GetCourseViewModel::class.java]
 
-        lifecycleScope.launch {
-
-        }
 
         val manager = LinearLayoutManager(requireContext()) // LayoutManager
-        //adapter = ItemCourseAdapter()
+        adapter = ItemCourseAdapter()
+        observeViewModel()
+
+        binding.apply {
+            courseRecyclerView.layoutManager = manager
+            courseRecyclerView.adapter = adapter
+        }
+
+
+    }
+
+    private fun observeViewModel() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                getCourseViewModel.courses.collect { items ->
+                    adapter.updateList(items) // Обновляем данные адаптера
+                }
+            }
+        }
     }
 
     companion object {

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
-import com.example.myapplication.presentaition.ui.fragments.showcourses.CoursesFragment
+import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
 
 class MFragmentFactory(private val userProfile: String, private val email: String, private val age: Int): FragmentFactory() {
 

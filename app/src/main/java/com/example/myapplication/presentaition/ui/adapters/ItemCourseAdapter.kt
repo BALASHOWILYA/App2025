@@ -10,8 +10,15 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.domain.models.Course
 
-class ItemCourseAdapter(private val courseList: List<Course>) :
+class ItemCourseAdapter() :
     RecyclerView.Adapter<ItemCourseAdapter.CourseViewHolder>() {
+    private var courseList: List<Course> = emptyList() // Измените на var
+
+    fun updateList(newList: List<Course>) {
+        courseList = newList
+        notifyDataSetChanged()
+    }
+
 
     // Класс ViewHolder для хранения ссылок на элементы представления
     class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

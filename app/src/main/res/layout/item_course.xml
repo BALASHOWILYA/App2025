@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_weight="1"
-        android:textSize="32sp"
+        android:textSize="48sp"
         android:text="@string/type_course" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_weight="6"
-        android:textSize="16sp"
+        android:textSize="32sp"
         android:text="@string/type_intro" />
 
 </LinearLayout>

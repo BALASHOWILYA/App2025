@@ -10,6 +10,7 @@ import com.example.myapplication.databinding.FragmentUserProfileBinding
 import com.example.myapplication.presentaition.constants.ARG_AGE
 import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
 import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
+import com.example.myapplication.presentaition.ui.fragments.courses.AddCourseFragment
 import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
 
 
@@ -80,6 +81,10 @@ class MUserProfileFragment : Fragment() {
 
             profileButtonForCoursesId.setOnClickListener{
                 replaceFragment(CoursesFragment::class.java.name)
+            }
+
+            profileButtonForAddingCoursesId.setOnClickListener{
+                replaceFragment(AddCourseFragment::class.java.name)
             }
 
         }

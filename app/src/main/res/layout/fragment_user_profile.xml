@@ -22,7 +22,7 @@
             android:layout_marginTop="36dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            tools:src="@drawable/ic_launcher_foreground" />
+            tools:src="@drawable/course" />
 
         <TextView
             android:id="@+id/profile_name_id"
@@ -86,9 +86,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/button_text_course" />
+
+    <Button
+        android:id="@+id/profile_button_for_adding_courses_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/profile_switch_adding_course_button" />
 
 
 </LinearLayout>

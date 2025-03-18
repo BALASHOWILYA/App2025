@@ -22,4 +22,6 @@
     <string name="type_course_name">Введите название курса:</string>
     <string name="type_course_intro">Введите краткое описание:</string>
     <string name="type_course_description">Введите подробное описание курса:</string>
+    <string name="add_course_button">Добавить курс</string>
+    <string name="profile_switch_adding_course_button">Перейти к добавлению своего курса</string>
 </resources>

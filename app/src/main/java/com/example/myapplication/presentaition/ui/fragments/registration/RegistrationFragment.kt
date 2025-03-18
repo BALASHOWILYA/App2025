@@ -80,7 +80,7 @@ class RegistrationFragment : Fragment() {
 
 
         val app = requireActivity().applicationContext as MyApplication
-        val addUserRepository = app.addUserRepositoryImpl
+        val addUserRepository = app.IAddUserRepositoryImpl
 
         val addUserUseCase = AddUserUseCase(addUserRepository)
         val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)

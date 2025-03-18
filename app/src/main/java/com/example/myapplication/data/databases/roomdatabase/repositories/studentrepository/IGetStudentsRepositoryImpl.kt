@@ -2,11 +2,12 @@ package com.example.myapplication.data.databases.roomdatabase.repositories.stude
 
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.domain.models.Student
-import com.example.myapplication.domain.repositories.studentrepository.AddStudentRepository
+import com.example.myapplication.domain.repositories.studentrepository.IGetStudentsRepository
 
-class AddStudentRepositoryImpl(private val database: AppRoomDatabase): AddStudentRepository {
+class IGetStudentsRepositoryImpl(private val database: AppRoomDatabase): IGetStudentsRepository {
     private val studentDao = database.studentDao()
-    override suspend fun addStudent(student: Student) {
+    override suspend fun getStudents(): List<Student> {
         TODO("Not yet implemented")
     }
+
 }

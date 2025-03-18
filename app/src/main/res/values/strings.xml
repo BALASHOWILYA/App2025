@@ -16,4 +16,6 @@
     <string name="_18">18</string>
     <string name="profile_email">Мой почта</string>
     <string name="profile_username">Имя пользователя</string>
+    <string name="type_intro">Краткое описание</string>
+    <string name="type_course">Название курса</string>
 </resources>

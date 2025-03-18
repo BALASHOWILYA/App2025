@@ -2,10 +2,9 @@ package com.example.myapplication.data.databases.roomdatabase.repositories.teach
 
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.domain.models.Teacher
-import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.teacherrepository.GetTeachersRepository
+import com.example.myapplication.domain.repositories.teacherrepository.IGetTeachersRepository
 
-class GetTeachersRepositoryImpl(private val database: AppRoomDatabase): GetTeachersRepository{
+class IGetTeachersRepositoryImpl(private val database: AppRoomDatabase): IGetTeachersRepository{
 
     private  val teacherDao = database.teacherDao()
 

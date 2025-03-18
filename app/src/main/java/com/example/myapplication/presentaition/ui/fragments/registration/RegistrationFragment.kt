@@ -13,6 +13,9 @@ import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
+import com.example.myapplication.presentaition.constants.ARG_AGE
+import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
+import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
 import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
@@ -80,7 +83,7 @@ class RegistrationFragment : Fragment() {
 
 
         val app = requireActivity().applicationContext as MyApplication
-        val addUserRepository = app.IAddUserRepositoryImpl
+        val addUserRepository = app.addUserRepositoryImpl
 
         val addUserUseCase = AddUserUseCase(addUserRepository)
         val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
@@ -112,17 +115,14 @@ class RegistrationFragment : Fragment() {
 
     companion object {
 
-        const val ARG_PROFILE_NAME = "arg_username"
-        const val ARG_PHONE_NUMBER = "arg_phonenumber"
-        const val ARG_AGE = "arg_age"
 
         @JvmStatic
         fun newInstance(profileName: String, phone: String, age: Int) =
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
-                    putString(MUserProfileFragment.ARG_PROFILE_NAME,profileName)
-                    putString(MUserProfileFragment.ARG_PHONE_NUMBER,phone)
-                    putInt(MUserProfileFragment.ARG_AGE,age)
+                    putString(ARG_PROFILE_NAME,profileName)
+                    putString(ARG_PHONE_NUMBER,phone)
+                    putInt(ARG_AGE,age)
                 }
             }
     }

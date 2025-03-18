@@ -4,7 +4,7 @@ import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDat
 import com.example.myapplication.domain.models.Teacher
 import com.example.myapplication.domain.repositories.teacherrepository.IAddTeacherRepository
 
-class IAddTeacherRepositoryImpl(private val database: AppRoomDatabase): IAddTeacherRepository{
+class AddTeacherRepositoryImpl(private val database: AppRoomDatabase): IAddTeacherRepository{
     private  val teacherDao = database.teacherDao()
 
     override suspend fun addTeacher(teacher: Teacher) {

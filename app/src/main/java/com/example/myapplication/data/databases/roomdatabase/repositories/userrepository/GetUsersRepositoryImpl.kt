@@ -5,7 +5,7 @@ import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDat
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.repositories.userrepository.IGetUsersRepository
 
-class IGetUsersRepositoryImpl(private val database: AppRoomDatabase): IGetUsersRepository {
+class GetUsersRepositoryImpl(private val database: AppRoomDatabase): IGetUsersRepository {
 
     private  val userDao = database.userDao()
 

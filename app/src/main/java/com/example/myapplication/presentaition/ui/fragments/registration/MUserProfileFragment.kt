@@ -8,7 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentUserProfileBinding
+import com.example.myapplication.presentaition.constants.ARG_AGE
+import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
+import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment.Companion
+import com.example.myapplication.presentaition.ui.fragments.showcourses.CoursesFragment
 
 
 class MUserProfileFragment : Fragment() {
@@ -20,6 +24,7 @@ class MUserProfileFragment : Fragment() {
     private var phone: String? = null
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,16 +80,21 @@ class MUserProfileFragment : Fragment() {
             profileEmailId.text = phone
             profileNameId.text = username
 
+            profileButtonForCoursesId.setOnClickListener{
+                replaceFragment(CoursesFragment::class.java.name)
+            }
+
         }
+
+
+
 
 
 
 
     }
     companion object {
-        const val ARG_PROFILE_NAME = "arg_username"
-        const val ARG_PHONE_NUMBER = "arg_phonenumber"
-        const val ARG_AGE = "arg_age"
+
 
 
         @JvmStatic

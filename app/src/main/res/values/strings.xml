@@ -18,4 +18,5 @@
     <string name="profile_username">Имя пользователя</string>
     <string name="type_intro">Краткое описание</string>
     <string name="type_course">Название курса</string>
+    <string name="button_text_course">Посмотреть курсы</string>
 </resources>

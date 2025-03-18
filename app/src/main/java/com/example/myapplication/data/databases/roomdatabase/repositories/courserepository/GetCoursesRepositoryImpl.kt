@@ -2,10 +2,9 @@ package com.example.myapplication.data.databases.roomdatabase.repositories.cours
 
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.domain.models.Course
-import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.repositories.courserepository.IGetCourseRepository
 
-class GetCoursesRepository(private val database: AppRoomDatabase): IGetCourseRepository {
+class GetCoursesRepositoryImpl(private val database: AppRoomDatabase): IGetCourseRepository {
 
     private val courseDao = database.courseDao()
 

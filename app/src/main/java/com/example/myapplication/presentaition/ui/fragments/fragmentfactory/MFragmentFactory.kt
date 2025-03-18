@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
+import com.example.myapplication.presentaition.ui.fragments.showcourses.CoursesFragment
 
 class MFragmentFactory(private val userProfile: String, private val email: String, private val age: Int): FragmentFactory() {
 
@@ -11,6 +12,7 @@ class MFragmentFactory(private val userProfile: String, private val email: Strin
         return when (className){
             RegistrationFragment::class.java.toString() -> RegistrationFragment.newInstance(userProfile,email,age )
             MUserProfileFragment::class.java.toString() -> MUserProfileFragment.newInstance()
+            CoursesFragment::class.java.toString() -> CoursesFragment.newInstance()
             else -> super.instantiate(classLoader, className)
         }
     }

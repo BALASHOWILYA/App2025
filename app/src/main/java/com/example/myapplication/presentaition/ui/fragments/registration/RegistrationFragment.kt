@@ -101,9 +101,17 @@ class RegistrationFragment : Fragment() {
             val age = binding.editAgeId.text.toString()
 
             if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
-                savedInstanceState?.putString(ARG_PROFILE_NAME, name)
-                savedInstanceState?.putString(ARG_PHONE_NUMBER, phoneNumber)
-                savedInstanceState?.putString(ARG_AGE, age)
+                // Создаем Bundle и передаем аргументы
+                val args = Bundle().apply {
+                    putString(ARG_PROFILE_NAME, name)
+                    putString(ARG_PHONE_NUMBER, phoneNumber)
+                    putString(ARG_AGE, age)
+                }
+
+                // Создаем фрагмент с аргументами
+                val fragment = MUserProfileFragment().apply {
+                    arguments = args
+                }
                 addUserViewModel.addUser(User(username = name, password = password, phoneNumber = phoneNumber, age = age.toInt()))
                 replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
             }

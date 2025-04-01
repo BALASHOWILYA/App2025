@@ -13,7 +13,7 @@ import com.example.myapplication.data.databases.roomdatabase.roomdao.CourseDao
 import com.example.myapplication.data.databases.roomdatabase.roomdao.StudentDao
 import com.example.myapplication.data.databases.roomdatabase.roomdao.TeacherDao
 
-@Database(entities = [UserDto::class, StudentDto::class, TeacherDto::class, CourseDto::class], version = 9)
+@Database(entities = [UserDto::class, StudentDto::class, TeacherDto::class, CourseDto::class], version = 10)
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

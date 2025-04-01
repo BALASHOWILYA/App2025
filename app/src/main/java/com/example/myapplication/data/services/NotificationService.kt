@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
 
@@ -21,13 +22,13 @@ class NotificationService : Service() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
-        startForegroundNotification()
+        //startForegroundNotification()
     }
 
     override fun onBind(intent: Intent): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
+        Log.d("SERVICE", "service started ")
         sendCustomNotification("Регистрация", "Вы успешно зарегистрировались")
         return START_STICKY
     }
@@ -35,6 +36,7 @@ class NotificationService : Service() {
 
     @SuppressLint("ForegroundServiceType")
     private fun startForegroundNotification(){
+
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Добро пожаловать ")

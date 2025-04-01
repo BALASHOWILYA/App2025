@@ -1,8 +1,15 @@
 package com.example.myapplication.presentaition.ui.activities
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+
 import com.example.myapplication.R
+import com.example.myapplication.data.services.NotificationService
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
@@ -30,6 +37,9 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container_id, fragment)
             .commitAllowingStateLoss()
     }
+
+
+
 
 
 

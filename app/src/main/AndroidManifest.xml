@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:name=".data.application.MyApplication"
         android:allowBackup="true"
@@ -20,7 +22,7 @@
         </receiver>
 
         <service
-            android:name=".data.services.MyService"
+            android:name=".data.services.NotificationService"
             android:enabled="true"
             android:exported="true" />
 

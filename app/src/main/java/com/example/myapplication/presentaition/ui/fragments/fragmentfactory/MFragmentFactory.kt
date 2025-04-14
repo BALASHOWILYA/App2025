@@ -12,7 +12,7 @@ class MFragmentFactory(private val userProfile: String, private val email: Strin
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className){
-            RegistrationFragment::class.java.toString() -> RegistrationFragment.newInstance(userProfile,email,age )
+            RegistrationFragment::class.java.toString() -> RegistrationFragment.newInstance()
             MUserProfileFragment::class.java.toString() -> MUserProfileFragment.newInstance()
             CoursesFragment::class.java.toString() -> CoursesFragment.newInstance()
             AddCourseFragment::class.java.toString() -> AddCourseFragment.newInstance()

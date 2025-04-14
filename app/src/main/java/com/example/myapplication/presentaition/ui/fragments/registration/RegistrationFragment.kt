@@ -22,6 +22,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.presentaition.services.NotificationService
 import com.example.myapplication.databinding.FragmentRegistrationBinding
+import com.example.myapplication.domain.models.Course
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
 import com.example.myapplication.presentaition.constants.ARG_AGE
@@ -77,7 +78,7 @@ class RegistrationFragment : Fragment() {
     }
 
 
-    private fun replaceFragment(fragmentName: String) {
+    private fun replaceFragment(fragmentName: String, user: User) {
         // Проверка, что fragmentName не пустой
         if (fragmentName.isEmpty()) {
             throw IllegalArgumentException("Fragment name cannot be empty")
@@ -87,6 +88,15 @@ class RegistrationFragment : Fragment() {
             // Создание фрагмента
             val fragment = requireActivity().supportFragmentManager.fragmentFactory
                 .instantiate(requireActivity().classLoader, fragmentName)
+
+            // Set arguments using a Bundle
+            fragment.arguments = Bundle().apply {
+                // Add data to the bundle
+                putString("ARG_USERNAME_STRING", user.username)
+                putString("ARG_PHONE_NUMBER_STRING", user.phoneNumber)
+                putInt("ARG_AGE_STRING", user.age.toInt())
+                // Add other data types as needed
+            }
 
             // Замена фрагмента
             requireActivity().supportFragmentManager
@@ -123,31 +133,20 @@ class RegistrationFragment : Fragment() {
             Log.d("ButtenTag", "pressed")
             val name = binding.editUsernameId.text.toString()
             val password = binding.editPasswordId.text.toString()
-            val phoneNumber = binding.editPhoneNumberId.toString()
+            val phoneNumber = binding.editPhoneNumberId.text.toString()
             val age = binding.editAgeId.text.toString()
+
 
             if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
                 // Создаем Bundle и передаем аргументы
 
-                val args = Bundle().apply {
-                    putString(ARG_PROFILE_NAME, name)
-                    putString(ARG_PHONE_NUMBER, phoneNumber)
-                    putString(ARG_AGE, age)
-                }
+                val user: User = User( username = name,
+                    password = password,
+                    phoneNumber = phoneNumber,
+                    age = age.toInt())
 
-                // Создаем фрагмент с аргументами
-                val fragment = MUserProfileFragment().apply {
-                    arguments = args
-                }
-                addUserViewModel.addUser(
-                    com.example.myapplication.domain.models.User(
-                        username = name,
-                        password = password,
-                        phoneNumber = phoneNumber,
-                        age = age.toInt()
-                    )
-                )
-                replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
+                addUserViewModel.addUser(user)
+                replaceFragment(MUserProfileFragment::class.java.name, user) // Используем .name для получения полного имени класса
                 // Проверка разрешений перед запуском сервиса
                 checkPermissionAndStartService()
             }
@@ -200,12 +199,10 @@ class RegistrationFragment : Fragment() {
 
 
         @JvmStatic
-        fun newInstance(profileName: String, phone: String, age: Int) =
+        fun newInstance() =
             RegistrationFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PROFILE_NAME,profileName)
-                    putString(ARG_PHONE_NUMBER,phone)
-                    putInt(ARG_AGE,age)
+
                 }
             }
     }

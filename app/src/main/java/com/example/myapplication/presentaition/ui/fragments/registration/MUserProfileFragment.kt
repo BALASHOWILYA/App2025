@@ -13,14 +13,19 @@ import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
 import com.example.myapplication.presentaition.ui.fragments.courses.AddCourseFragment
 import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
 
+private const val ARG_PARAM1 = "ARG_AGE_STRING"
+private const val ARG_PARAM2 ="ARG_USERNAME_STRING"
+private const val ARG_PARAM3 = "ARG_PHONE_NUMBER_STRING"
+
+
 
 class MUserProfileFragment : Fragment() {
 
 
 
-    private var age: Int? = null
-    private var username: String? = null
-    private var phone: String? = null
+    private var param1: String? = null
+    private var param2: String? = null
+    private var param3: String? = null
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -30,9 +35,9 @@ class MUserProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            age = it.getInt(savedInstanceState?.getString(ARG_AGE)) ?: 0
-            username = it.getString(savedInstanceState?.getString(ARG_PROFILE_NAME)) ?: ""
-            phone = it.getString(savedInstanceState?.getString(ARG_PHONE_NUMBER)) ?: ""
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+            param3 = it.getString(ARG_PARAM3)
         }
     }
 
@@ -75,9 +80,9 @@ class MUserProfileFragment : Fragment() {
 
 
         binding.apply {
-            profileAgeId.text = age.toString()
-            profileEmailId.text = phone
-            profileNameId.text = username
+            profileAgeId.text = param1
+            profileNameId.text = param2
+            profileEmailId.text = param3
 
             profileButtonForCoursesId.setOnClickListener{
                 replaceFragment(CoursesFragment::class.java.name)

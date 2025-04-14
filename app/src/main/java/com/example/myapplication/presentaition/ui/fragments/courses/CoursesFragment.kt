@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
 import com.example.myapplication.databinding.FragmentCoursesBinding
 import com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase
@@ -58,7 +59,7 @@ class CoursesFragment : Fragment() {
 
 
         val manager = LinearLayoutManager(requireContext()) // LayoutManager
-        adapter = ItemCourseAdapter()
+        adapter = ItemCourseAdapter(requireActivity())
         observeViewModel()
 
         binding.apply {
@@ -67,6 +68,30 @@ class CoursesFragment : Fragment() {
         }
 
 
+    }
+
+    private fun replaceFragment(fragmentName: String) {
+        // Проверка, что fragmentName не пустой
+        if (fragmentName.isEmpty()) {
+            throw IllegalArgumentException("Fragment name cannot be empty")
+        }
+
+        try {
+            // Создание фрагмента
+            val fragment = requireActivity().supportFragmentManager.fragmentFactory
+                .instantiate(requireActivity().classLoader, fragmentName)
+
+            // Замена фрагмента
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_id, fragment)
+                .addToBackStack(null) // Добавление транзакции в back stack
+                .commitAllowingStateLoss() // Подтверждение транзакции
+        } catch (e: Fragment.InstantiationException) {
+            // Обработка ошибки
+            e.printStackTrace()
+            throw RuntimeException("Failed to instantiate fragment: $fragmentName", e)
+        }
     }
 
     private fun observeViewModel() {

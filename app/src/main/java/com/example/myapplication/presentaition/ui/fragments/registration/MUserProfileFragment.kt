@@ -80,9 +80,9 @@ class MUserProfileFragment : Fragment() {
 
 
         binding.apply {
-            profileAgeId.text = param1
+            profileAgeId.text = param1.toString()
             profileNameId.text = param2
-            profileEmailId.text = param3
+            profileCurrentPhoneId.text = param3
 
             profileButtonForCoursesId.setOnClickListener{
                 replaceFragment(CoursesFragment::class.java.name)

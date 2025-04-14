@@ -30,8 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:layout_marginStart="16dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:textSize="16sp"
+            android:textSize="32sp"
             android:text="@string/profile_username" />
 
 
@@ -69,13 +70,22 @@
 
 
         <TextView
-            android:id="@+id/profile_email_id"
+            android:id="@+id/profile_phone_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:textSize="16sp"
-            android:text="@string/profile_email" />
+            android:text="Номер телефона: " />
+
+        <TextView
+            android:id="@+id/profile_current_phone_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="89048232611" />
 
 
 

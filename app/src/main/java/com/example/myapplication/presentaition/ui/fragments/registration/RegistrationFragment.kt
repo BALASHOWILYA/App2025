@@ -136,7 +136,7 @@ class RegistrationFragment : Fragment() {
             val phoneNumber = binding.editPhoneNumberId.text.toString()
             val age = binding.editAgeId.text.toString()
 
-
+            Log.d("ButtenTag", age)
             if(name.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && phoneNumber.isNotEmpty()){
                 // Создаем Bundle и передаем аргументы
 
@@ -144,6 +144,8 @@ class RegistrationFragment : Fragment() {
                     password = password,
                     phoneNumber = phoneNumber,
                     age = age.toInt())
+                Log.d("ButtenTag", user.toString())
+
 
                 addUserViewModel.addUser(user)
                 replaceFragment(MUserProfileFragment::class.java.name, user) // Используем .name для получения полного имени класса

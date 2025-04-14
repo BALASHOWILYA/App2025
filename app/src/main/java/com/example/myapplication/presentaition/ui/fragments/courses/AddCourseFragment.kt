@@ -53,7 +53,10 @@ class AddCourseFragment : Fragment() {
         val app = requireActivity().applicationContext as MyApplication
         val addCourseRepository = app.addCourseRepositoryImpl
 
-        val addCourseUseCase = AddCourseUseCase(addCourseRepository)
+        val addCourseUseCase =
+            com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase(
+                addCourseRepository
+            )
         val addCourseViewModelFactory = AddCourseViewModelFactory(addCourseUseCase)
 
         addCourseViewModel = ViewModelProvider(this, addCourseViewModelFactory)[AddCourseViewModel::class.java]
@@ -68,7 +71,14 @@ class AddCourseFragment : Fragment() {
 
             if(name.isNotEmpty() && intro.isNotEmpty() && description.isNotEmpty()){
 
-                addCourseViewModel.addCourse(Course(coursePicture = R.drawable.course, name = name, intro = intro, description = description))
+                addCourseViewModel.addCourse(
+                    com.example.myapplication.domain.models.Course(
+                        coursePicture = R.drawable.course,
+                        name = name,
+                        intro = intro,
+                        description = description
+                    )
+                )
                 replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
             }
 

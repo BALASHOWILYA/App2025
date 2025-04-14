@@ -8,7 +8,7 @@ import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCou
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
 
 @Suppress("UNCHECKED_CAST")
-class GetCourseViewModelFactory(private val getCourseUseCase: GetCoursesUseCase) : ViewModelProvider.Factory {
+class GetCourseViewModelFactory(private val getCourseUseCase: com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return GetCourseViewModel(getCourseUseCase) as T
     }

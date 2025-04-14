@@ -24,7 +24,7 @@
         </receiver>
 
         <service
-            android:name=".data.services.NotificationService"
+            android:name=".presentaition.services.NotificationService"
             android:enabled="true"
             android:exported="true" />
 

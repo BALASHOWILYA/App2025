@@ -47,7 +47,10 @@ class CoursesFragment : Fragment() {
         val app = requireActivity().applicationContext as MyApplication
         val getCoursesRepository = app.getCoursesRepositoryImpl
 
-        val getCourseUseCase = GetCoursesUseCase(getCoursesRepository)
+        val getCourseUseCase =
+            com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase(
+                getCoursesRepository
+            )
         val getCoursesViewModelFactory = GetCourseViewModelFactory(getCourseUseCase)
 
 

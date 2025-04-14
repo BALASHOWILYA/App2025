@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 
-class UserViewModel(private val getUsersUseCase: GetUsersUseCase) : ViewModel() {
-    private val _users = MutableStateFlow<List<User>>(emptyList())
-    val users: StateFlow<List<User>> = _users
+class UserViewModel(private val getUsersUseCase: com.example.myapplication.domain.usecases.userusecase.GetUsersUseCase) : ViewModel() {
+    private val _users = MutableStateFlow<List<com.example.myapplication.domain.models.User>>(emptyList())
+    val users: StateFlow<List<com.example.myapplication.domain.models.User>> = _users
 
     init {
         fetchUsers()

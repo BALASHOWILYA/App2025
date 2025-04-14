@@ -6,7 +6,7 @@ import com.example.myapplication.domain.usecases.userusecase.GetUsersUseCase
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
 
 @Suppress("UNCHECKED_CAST")
-class UserViewModelFactory(private val getUsersUseCase: GetUsersUseCase): ViewModelProvider.Factory {
+class UserViewModelFactory(private val getUsersUseCase: com.example.myapplication.domain.usecases.userusecase.GetUsersUseCase): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return UserViewModel(getUsersUseCase) as T

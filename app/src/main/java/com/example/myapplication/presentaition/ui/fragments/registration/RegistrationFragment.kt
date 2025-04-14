@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
-import com.example.myapplication.data.services.NotificationService
+import com.example.myapplication.presentaition.services.NotificationService
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
@@ -110,7 +110,8 @@ class RegistrationFragment : Fragment() {
         val app = requireActivity().applicationContext as MyApplication
         val addUserRepository = app.addUserRepositoryImpl
 
-        val addUserUseCase = AddUserUseCase(addUserRepository)
+        val addUserUseCase =
+            com.example.myapplication.domain.usecases.userusecase.AddUserUseCase(addUserRepository)
         val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
 
         addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
@@ -138,7 +139,14 @@ class RegistrationFragment : Fragment() {
                 val fragment = MUserProfileFragment().apply {
                     arguments = args
                 }
-                addUserViewModel.addUser(User(username = name, password = password, phoneNumber = phoneNumber, age = age.toInt()))
+                addUserViewModel.addUser(
+                    com.example.myapplication.domain.models.User(
+                        username = name,
+                        password = password,
+                        phoneNumber = phoneNumber,
+                        age = age.toInt()
+                    )
+                )
                 replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
                 // Проверка разрешений перед запуском сервиса
                 checkPermissionAndStartService()
@@ -175,6 +183,7 @@ class RegistrationFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun startNotificationService() {
         val serviceIntent = Intent(requireActivity(), NotificationService::class.java)
+
         requireActivity().startForegroundService(serviceIntent)
     }
 

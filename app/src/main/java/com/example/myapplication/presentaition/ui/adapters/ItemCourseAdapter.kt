@@ -12,9 +12,9 @@ import com.example.myapplication.domain.models.Course
 
 class ItemCourseAdapter() :
     RecyclerView.Adapter<ItemCourseAdapter.CourseViewHolder>() {
-    private var courseList: List<Course> = emptyList() // Измените на var
+    private var courseList: List<com.example.myapplication.domain.models.Course> = emptyList() // Измените на var
 
-    fun updateList(newList: List<Course>) {
+    fun updateList(newList: List<com.example.myapplication.domain.models.Course>) {
         courseList = newList
         notifyDataSetChanged()
     }

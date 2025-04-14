@@ -7,9 +7,9 @@ import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase
 import kotlinx.coroutines.launch
 
-class AddCourseViewModel(private val addCourseUseCase: AddCourseUseCase) : ViewModel() {
+class AddCourseViewModel(private val addCourseUseCase: com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase) : ViewModel() {
 
-    fun addCourse(course: Course) = viewModelScope.launch {
+    fun addCourse(course: com.example.myapplication.domain.models.Course) = viewModelScope.launch {
         addCourseUseCase(course = course)
 
     }

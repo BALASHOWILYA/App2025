@@ -1,6 +1,7 @@
 package com.example.myapplication.presentaition.ui.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,7 @@ class ItemCourseAdapter(val context: FragmentActivity) :
         val courseImage: ImageView = itemView.findViewById(R.id.course_image_id)
         val courseName: TextView = itemView.findViewById(R.id.course_name_id)
         val courseIntro: TextView = itemView.findViewById(R.id.course_intro_id)
-        val courseButton: Button = itemView.findViewById(com.example.myapplication.R.id.course_button_id)
+        val courseButton: Button = itemView.findViewById(R.id.course_button_id)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
@@ -76,11 +77,9 @@ class ItemCourseAdapter(val context: FragmentActivity) :
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         // Получаем данные для текущей позиции
         val currentItem = courseList[position]
-
         // Устанавливаем данные в элементы
         holder.courseName.text = currentItem.name
         holder.courseIntro.text = currentItem.intro
-
         holder.courseButton.setOnClickListener{
             replaceFragment(CourseFragment::class.java.toString(), currentItem)
         }

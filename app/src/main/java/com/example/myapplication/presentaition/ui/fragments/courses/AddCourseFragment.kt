@@ -66,7 +66,7 @@ class AddCourseFragment : Fragment() {
             Log.d("ButtenTag", "pressed")
             val name = binding.editNameCourseId.text.toString()
             val intro = binding.editIntroCourseId.text.toString()
-            val description = binding.editDescriptionCourseId.toString()
+            val description = binding.editDescriptionCourseId.text.toString()
 
 
             if(name.isNotEmpty() && intro.isNotEmpty() && description.isNotEmpty()){

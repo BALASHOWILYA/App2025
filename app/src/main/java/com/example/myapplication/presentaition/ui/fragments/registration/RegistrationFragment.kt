@@ -19,17 +19,13 @@ import androidx.lifecycle.ViewModelProvider
 
 
 import com.example.myapplication.R
-import com.example.myapplication.data.application.MyApplication
+import com.example.myapplication.presentaition.application.MyApplication
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.Course
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
-import com.example.myapplication.presentaition.constants.ARG_AGE
-import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
-import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
-import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.UserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
@@ -43,8 +39,8 @@ class RegistrationFragment : Fragment() {
     private var text: String? = null
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
-    private lateinit var userViewModel: UserViewModel
-    private lateinit var addUserViewModel: AddUserViewModel
+    private val userViewModel: UserViewModel by viewModel<UserViewModel>()
+    private val addUserViewModel: AddUserViewModel by viewModel<AddUserViewModel>()
 
 
 
@@ -104,18 +100,6 @@ class RegistrationFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        val app = requireActivity().applicationContext as MyApplication
-        val addUserRepository = app.addUserRepositoryImpl
-
-        val addUserUseCase =
-            com.example.myapplication.domain.usecases.userusecase.AddUserUseCase(addUserRepository)
-        val addUserViewModelFactory = AddUserViewModelFactory(addUserUseCase)
-
-        addUserViewModel = ViewModelProvider(this, addUserViewModelFactory)[AddUserViewModel::class.java]
-
-
 
         binding.profileBtnId.setOnClickListener {
 

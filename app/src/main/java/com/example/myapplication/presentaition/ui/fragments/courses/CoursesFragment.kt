@@ -11,13 +11,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.data.application.MyApplication
+import com.example.myapplication.presentaition.application.MyApplication
 import com.example.myapplication.databinding.FragmentCoursesBinding
 import com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase
 import com.example.myapplication.presentaition.ui.adapters.ItemCourseAdapter
-import com.example.myapplication.presentaition.viewmodelfactories.coursefactory.GetCourseViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CoursesFragment : Fragment() {
@@ -25,7 +25,7 @@ class CoursesFragment : Fragment() {
     private var _binding: FragmentCoursesBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: ItemCourseAdapter
-    private lateinit var getCourseViewModel: GetCourseViewModel
+    private val getCourseViewModel: GetCourseViewModel by viewModel<GetCourseViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,15 +44,6 @@ class CoursesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val app = requireActivity().applicationContext as MyApplication
-        val getCoursesRepository = app.getCoursesRepositoryImpl
-
-        val getCourseUseCase = GetCoursesUseCase(getCoursesRepository)
-        val getCoursesViewModelFactory = GetCourseViewModelFactory(getCourseUseCase)
-
-
-        getCourseViewModel = ViewModelProvider(this, getCoursesViewModelFactory)[GetCourseViewModel::class.java]
 
 
         val manager = LinearLayoutManager(requireContext()) // LayoutManager

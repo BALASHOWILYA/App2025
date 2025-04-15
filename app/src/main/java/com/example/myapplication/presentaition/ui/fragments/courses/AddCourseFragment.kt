@@ -8,28 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.data.application.MyApplication
+import com.example.myapplication.presentaition.application.MyApplication
 import com.example.myapplication.databinding.FragmentAddCourseBinding
 import com.example.myapplication.databinding.FragmentCoursesBinding
 import com.example.myapplication.domain.models.Course
-import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase
-import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
-import com.example.myapplication.presentaition.constants.ARG_AGE
-import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
-import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
-import com.example.myapplication.presentaition.viewmodelfactories.coursefactory.AddCourseViewModelFactory
-import com.example.myapplication.presentaition.viewmodelfactories.userfactory.AddUserViewModelFactory
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AddCourseFragment : Fragment() {
 
     private var _binding: FragmentAddCourseBinding? = null
     private val binding get() = _binding!!
-    private lateinit var addCourseViewModel: AddCourseViewModel
+    private val addCourseViewModel: AddCourseViewModel by viewModel<AddCourseViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +43,7 @@ class AddCourseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val app = requireActivity().applicationContext as MyApplication
-        val addCourseRepository = app.addCourseRepositoryImpl
-        val addCourseUseCase = AddCourseUseCase(addCourseRepository)
-        val addCourseViewModelFactory = AddCourseViewModelFactory(addCourseUseCase)
-        addCourseViewModel = ViewModelProvider(this, addCourseViewModelFactory)[AddCourseViewModel::class.java]
+
 
         binding.addCourseButtonId.setOnClickListener {
 

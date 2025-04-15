@@ -7,7 +7,7 @@
 
 
     <application
-        android:name=".data.application.MyApplication"
+        android:name=".presentaition.application.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

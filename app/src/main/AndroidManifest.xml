@@ -23,11 +23,6 @@
             android:exported="true" >
         </receiver>
 
-        <service
-            android:name=".presentaition.services.NotificationService"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity
             android:name=".presentaition.ui.activities.MainActivity"
             android:exported="true" >

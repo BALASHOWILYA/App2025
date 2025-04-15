@@ -52,18 +52,12 @@ class AddCourseFragment : Fragment() {
 
         val app = requireActivity().applicationContext as MyApplication
         val addCourseRepository = app.addCourseRepositoryImpl
-
-        val addCourseUseCase =
-            com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase(
-                addCourseRepository
-            )
+        val addCourseUseCase = AddCourseUseCase(addCourseRepository)
         val addCourseViewModelFactory = AddCourseViewModelFactory(addCourseUseCase)
-
         addCourseViewModel = ViewModelProvider(this, addCourseViewModelFactory)[AddCourseViewModel::class.java]
 
         binding.addCourseButtonId.setOnClickListener {
 
-            Log.d("ButtenTag", "pressed")
             val name = binding.editNameCourseId.text.toString()
             val intro = binding.editIntroCourseId.text.toString()
             val description = binding.editDescriptionCourseId.text.toString()
@@ -71,8 +65,7 @@ class AddCourseFragment : Fragment() {
 
             if(name.isNotEmpty() && intro.isNotEmpty() && description.isNotEmpty()){
 
-                addCourseViewModel.addCourse(
-                    com.example.myapplication.domain.models.Course(
+                addCourseViewModel.addCourse(Course(
                         coursePicture = R.drawable.course,
                         name = name,
                         intro = intro,
@@ -86,15 +79,14 @@ class AddCourseFragment : Fragment() {
     }
 
     private fun replaceFragment(fragmentName: String) {
-        // Проверка, что fragmentName не пустой
+
         if (fragmentName.isEmpty()) {
             throw IllegalArgumentException("Fragment name cannot be empty")
         }
 
         try {
-            // Создание фрагмента
-            val fragment = requireActivity().supportFragmentManager.fragmentFactory
-                .instantiate(requireActivity().classLoader, fragmentName)
+
+            val fragment = requireActivity().supportFragmentManager.fragmentFactory.instantiate(requireActivity().classLoader, fragmentName)
 
             // Замена фрагмента
             requireActivity().supportFragmentManager

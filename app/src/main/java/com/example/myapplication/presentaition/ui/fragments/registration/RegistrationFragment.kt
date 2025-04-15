@@ -20,7 +20,6 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.myapplication.R
 import com.example.myapplication.data.application.MyApplication
-import com.example.myapplication.presentaition.services.NotificationService
 import com.example.myapplication.databinding.FragmentRegistrationBinding
 import com.example.myapplication.domain.models.Course
 import com.example.myapplication.domain.models.User
@@ -47,18 +46,7 @@ class RegistrationFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var addUserViewModel: AddUserViewModel
 
-    // Обработчик результата запроса разрешения
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted ->
-        if (isGranted) {
-            startNotificationService()
-        } else {
-            // Обработка отказа в разрешении
-            Log.d("Notifications", "Permission denied")
-        }
-    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +82,8 @@ class RegistrationFragment : Fragment() {
                 // Add data to the bundle
                 putString("ARG_USERNAME_STRING", user.username)
                 putString("ARG_PHONE_NUMBER_STRING", user.phoneNumber)
-                putInt("ARG_AGE_STRING", user.age.toInt())
+                putString("ARG_AGE_STRING", user.age.toString())
+                putInt("ARG_PROFILE_PHOTO", com.example.myapplication.R.drawable.course)
                 // Add other data types as needed
             }
 
@@ -150,50 +139,19 @@ class RegistrationFragment : Fragment() {
                 addUserViewModel.addUser(user)
                 replaceFragment(MUserProfileFragment::class.java.name, user) // Используем .name для получения полного имени класса
                 // Проверка разрешений перед запуском сервиса
-                checkPermissionAndStartService()
+
             }
 
         }
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun checkPermissionAndStartService() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            when {
-                ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.FOREGROUND_SERVICE
-                ) ==  PackageManager.PERMISSION_GRANTED -> {
-                    startNotificationService()
-                }
-                else -> {
-                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                    requestPermissionLauncher.launch(Manifest.permission.FOREGROUND_SERVICE)
-                }
-            }
-        } else {
-            // Для версий ниже Android 13 разрешение не требуется
-            startNotificationService()
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun startNotificationService() {
-        val serviceIntent = Intent(requireActivity(), NotificationService::class.java)
-
-        requireActivity().startForegroundService(serviceIntent)
-    }
 
 
 
-    private fun stopNotificationService(){
-        val serviceIntent = Intent(requireActivity(), NotificationService::class.java)
-        requireActivity().stopService(serviceIntent)
-    }
+
+
+
 
 
 

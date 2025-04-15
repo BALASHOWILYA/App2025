@@ -42,30 +42,6 @@ class CourseFragment : Fragment() {
         }
     }
 
-    private fun replaceFragment(fragmentName: String) {
-        // Проверка, что fragmentName не пустой
-        if (fragmentName.isEmpty()) {
-            throw IllegalArgumentException("Fragment name cannot be empty")
-        }
-
-        try {
-            // Создание фрагмента
-            val fragment = requireActivity().supportFragmentManager.fragmentFactory
-                .instantiate(requireActivity().classLoader, fragmentName)
-
-            // Замена фрагмента
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container_id, fragment)
-                .addToBackStack(null) // Добавление транзакции в back stack
-                .commitAllowingStateLoss() // Подтверждение транзакции
-        } catch (e: Fragment.InstantiationException) {
-            // Обработка ошибки
-            e.printStackTrace()
-            throw RuntimeException("Failed to instantiate fragment: $fragmentName", e)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,6 +49,7 @@ class CourseFragment : Fragment() {
         _binding = FragmentCourseBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     companion object {
 

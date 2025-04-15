@@ -8,7 +8,7 @@ import com.example.myapplication.presentaition.ui.fragments.registration.Registr
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
 import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
 
-class MFragmentFactory(private val userProfile: String, private val email: String, private val age: Int): FragmentFactory() {
+class MFragmentFactory(): FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className){

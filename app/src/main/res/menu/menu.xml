@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/my_information"
+        android:icon="@drawable/baseline_account_box_24" />
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile_id"
+            android:title="@string/profile" />
+    </group>
+
+    <item android:title="@string/games"
+        android:icon="@drawable/baseline_castle_24" />
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_first_game_id"
+            android:title="@string/chess_name" />
+    </group>
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout_id"
+            android:title="@string/logout" />
+    </group>
+</menu>

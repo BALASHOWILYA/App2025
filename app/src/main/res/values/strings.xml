@@ -24,4 +24,9 @@
     <string name="type_course_description">Введите подробное описание курса:</string>
     <string name="add_course_button">Добавить курс</string>
     <string name="profile_switch_adding_course_button">Перейти к добавлению своего курса</string>
+    <string name="chess_name">Шахматы</string>
+    <string name="logout">Выход</string>
+    <string name="games">Игры</string>
+    <string name="profile">Профиль</string>
+    <string name="my_information">Моя информация</string>
 </resources>

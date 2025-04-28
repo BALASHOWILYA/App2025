@@ -101,6 +101,7 @@ class RegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.profileBtnId.setOnClickListener {
 
             Log.d("ButtenTag", "pressed")

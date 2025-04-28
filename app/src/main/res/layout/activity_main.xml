@@ -10,6 +10,13 @@
     tools:context=".presentaition.ui.activities.MainActivity">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/white"
+        app:title="Курсы для всех"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_id"

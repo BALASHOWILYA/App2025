@@ -94,7 +94,7 @@
     <Button
         android:id="@+id/profile_button_for_courses_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
@@ -104,7 +104,7 @@
     <Button
         android:id="@+id/profile_button_for_adding_courses_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:textSize="16sp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

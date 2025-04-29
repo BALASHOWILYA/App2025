@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity(){
                         true
                     }
                     com.example.myapplication.R.id.nav_logout_id->{
+                        finish()
                         true
                     }
                     else -> false

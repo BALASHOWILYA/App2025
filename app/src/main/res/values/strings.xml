@@ -30,4 +30,12 @@
     <string name="profile">Профиль</string>
     <string name="my_information">Моя информация</string>
     <string name="settings">Настройки</string>
+
+    <string-array name="text_style">
+        <item>Светлая</item>
+        <item>Темная</item>
+        <item>Курсив</item>
+        <item>Полужирный+Курсив</item>
+    </string-array>
+
 </resources>

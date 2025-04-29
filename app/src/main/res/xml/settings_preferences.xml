@@ -7,5 +7,14 @@
         android:summary="Use to turn your hotspot ON/OFF"
         android:key="switch_pref"/>
 
+    <ListPreference
+        android:key="test_style"
+        android:title="Стиль для темы приложения"
+        android:summary="Устанавливает стиль для темы приложения"
+        android:defaultValue="1"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:dialogTitle="Выберите стиль для шрифта" />
+
 
 </PreferenceScreen>

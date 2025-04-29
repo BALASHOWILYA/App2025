@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentUserProfileBinding
@@ -13,6 +14,11 @@ import com.example.myapplication.presentaition.constants.ARG_PHONE_NUMBER
 import com.example.myapplication.presentaition.constants.ARG_PROFILE_NAME
 import com.example.myapplication.presentaition.ui.fragments.courses.AddCourseFragment
 import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
+import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.GetUserViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val ARG_PARAM1 = "ARG_AGE_STRING"
 private const val ARG_PARAM2 ="ARG_USERNAME_STRING"
@@ -21,6 +27,8 @@ private const val ARG_PARAM4 = "ARG_PROFILE_PHOTO"
 
 class MUserProfileFragment : Fragment() {
 
+
+    private val getCourseViewModel: GetUserViewModel by viewModel<GetUserViewModel>()
 
     private var param1: String? = null
     private var param2: String? = null
@@ -90,29 +98,49 @@ class MUserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Если аргументы не были переданы — подгружаем из ViewModel
+        if (param1 == null || param2 == null || param3 == null || param4 == null) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                getCourseViewModel.user.collectLatest { user ->
+                    user?.let {
+                        param1 = it.password
+                        param2 = it.username
+                        param3 = it.phoneNumber
+                        param4 = it.age
 
-        binding.apply {
-            profileAgeId.text = param1.toString()
-            profileNameId.text = param2
-            profileCurrentPhoneId.text = param3
+                        // Обновляем UI
+                        binding.profileAgeId.text = param1
+                        binding.profileNameId.text = param2
+                        binding.profileCurrentPhoneId.text = param3
 
+                        Glide.with(requireContext())
+                            .load(param4)
+                            .placeholder(R.drawable.course)
+                            .into(binding.profileImageId)
+                    }
+                }
+            }
+        } else {
+            // Используем данные из аргументов
+            binding.profileAgeId.text = param1
+            binding.profileNameId.text = param2
+            binding.profileCurrentPhoneId.text = param3
 
-            // Для изображения можно использовать Glide/Picasso
             Glide.with(requireContext())
                 .load(param4)
-                .into(profileImageId)
-
-            profileButtonForCoursesId.setOnClickListener{
-                replaceFragment(CoursesFragment::class.java.name)
-            }
-
-            profileButtonForAddingCoursesId.setOnClickListener{
-                replaceFragment(AddCourseFragment::class.java.name)
-            }
-
+                .placeholder(R.drawable.course)
+                .into(binding.profileImageId)
         }
 
+        binding.profileButtonForCoursesId.setOnClickListener {
+            replaceFragment(CoursesFragment::class.java.name)
+        }
+
+        binding.profileButtonForAddingCoursesId.setOnClickListener {
+            replaceFragment(AddCourseFragment::class.java.name)
+        }
     }
+
 
 
     override fun onSaveInstanceState(outState: Bundle) {

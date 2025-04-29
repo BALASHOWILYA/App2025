@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(){
         setSupportActionBar(binding.toolbar)
 
         if(savedInstanceState == null){
-            replaceFragment(MUserProfileFragment::class.java.toString())
+            replaceFragment(RegistrationFragment::class.java.toString())
         }
 
         setup_menu()

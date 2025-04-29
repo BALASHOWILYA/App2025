@@ -13,10 +13,11 @@ interface UserDao {
     @Query("SELECT * FROM users")
     suspend fun getAllUsers(): List<UserDto>
 
-
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userDto: UserDto)
+
+    @Query("SELECT * FROM users ORDER BY id DESC LIMIT 1")
+    suspend fun getUser(): UserDto
 
 
 }

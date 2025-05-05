@@ -17,7 +17,7 @@ import com.example.myapplication.domain.repositories.studentrepository.IGetStude
 import com.example.myapplication.domain.repositories.teacherrepository.IAddTeacherRepository
 import com.example.myapplication.domain.repositories.teacherrepository.IGetTeachersRepository
 import com.example.myapplication.domain.repositories.userrepository.IAddUserRepository
-import com.example.myapplication.domain.repositories.userrepository.IGetUserRepository
+import com.example.myapplication.domain.repositories.userrepository.IGetLastUserRepository
 import com.example.myapplication.domain.repositories.userrepository.IGetUsersRepository
 import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
 import org.koin.android.ext.koin.androidContext
@@ -34,7 +34,7 @@ val dataModule = module {
         GetUsersRepositoryImpl(database = get())
     }
 
-    single<IGetUserRepository> {
+    single<IGetLastUserRepository> {
         GetUserRepositoryImpl(database = get())
     }
 

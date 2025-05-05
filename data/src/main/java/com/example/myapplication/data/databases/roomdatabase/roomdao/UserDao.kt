@@ -19,10 +19,4 @@ interface UserDao {
     @Query("SELECT * FROM users ORDER BY id DESC LIMIT 1")
     suspend fun getUser(): UserDto
 
-
-    @Query("SELECT * FROM users WHERE id = MAX(id) LIMIT 1")
-    suspend fun getUser(): UserDto
-
-
-
 }

@@ -24,7 +24,7 @@ val domainModule = module {
     }
 
     factory<GetUserUseCase> {
-        GetUserUseCase(getUserRepository = get())
+        GetUserUseCase(getLastUserRepository = get())
     }
 
     factory<GetTeachersUseCase>{

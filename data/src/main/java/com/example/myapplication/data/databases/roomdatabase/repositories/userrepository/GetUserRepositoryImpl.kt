@@ -2,9 +2,9 @@ package com.example.myapplication.data.databases.roomdatabase.repositories.userr
 
 import com.example.myapplication.data.databases.roomdatabase.database.AppRoomDatabase
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.domain.repositories.userrepository.IGetUserRepository
+import com.example.myapplication.domain.repositories.userrepository.IGetLastUserRepository
 
-class GetUserRepositoryImpl(private val database: AppRoomDatabase): IGetUserRepository {
+class GetUserRepositoryImpl(private val database: AppRoomDatabase): IGetLastUserRepository {
 
     private  val userDao = database.userDao()
 

@@ -20,4 +20,9 @@ interface UserDao {
     suspend fun getUser(): UserDto
 
 
+    @Query("SELECT * FROM users WHERE id = MAX(id) LIMIT 1")
+    suspend fun getUser(): UserDto
+
+
+
 }

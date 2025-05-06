@@ -8,7 +8,7 @@ import com.example.myapplication.data.databases.roomdatabase.repositories.studen
 import com.example.myapplication.data.databases.roomdatabase.repositories.teacherrepository.AddTeacherRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.teacherrepository.GetTeachersRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.AddUserRepositoryImpl
-import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetUserRepositoryImpl
+import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetLastUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetUsersRepositoryImpl
 import com.example.myapplication.domain.repositories.courserepository.IAddCourseRepository
 import com.example.myapplication.domain.repositories.courserepository.IGetCourseRepository
@@ -35,7 +35,7 @@ val dataModule = module {
     }
 
     single<IGetLastUserRepository> {
-        GetUserRepositoryImpl(database = get())
+        GetLastUserRepositoryImpl(database = get())
     }
 
     single<IAddUserRepository> {

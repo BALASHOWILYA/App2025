@@ -2,6 +2,7 @@ package com.example.myapplication.domain.repositories.userrepository
 
 import com.example.myapplication.domain.models.User
 
-interface IGetUserRepository {
+interface IGetLastUserRepository {
     suspend fun getUser(): User?
 }
+

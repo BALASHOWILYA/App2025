@@ -16,7 +16,6 @@ val appModule = module {
         )
     }
 
-
     viewModel<UserViewModel>{
         UserViewModel(
             getUsersUseCase = get()
@@ -40,7 +39,4 @@ val appModule = module {
             getCoursesUseCase = get()
         )
     }
-
-
-
 }

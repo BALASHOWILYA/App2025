@@ -103,7 +103,7 @@ class MUserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Если аргументы не были переданы — подгружаем из ViewModel
-        if (param1Password == null || param2Username == null || param3PhoneNumber == null || param4Age == null) {
+        if (param5Photo == null || param2Username == null || param3PhoneNumber == null || param4Age == null) {
             viewLifecycleOwner.lifecycleScope.launch {
                 getUserViewModel.user.collectLatest { user ->
                     user?.let {

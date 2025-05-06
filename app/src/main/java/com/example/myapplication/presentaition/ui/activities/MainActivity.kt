@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -20,11 +22,16 @@ import com.example.myapplication.presentaition.ui.fragments.registration.Registr
 import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
 import com.example.myapplication.presentaition.ui.fragments.settings.FragmentSettings
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.GetUserViewModel
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
+    private val getUserViewModel: GetUserViewModel by viewModel<GetUserViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportFragmentManager.fragmentFactory = MFragmentFactory()
@@ -33,11 +40,20 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-
-        if(savedInstanceState == null){
-            replaceFragment(RegistrationFragment::class.java.toString())
+        try {
+            lifecycleScope.launch {
+                getUserViewModel.user.collectLatest { user ->
+                    if (user != null) {
+                        replaceFragment(MUserProfileFragment::class.java.toString())
+                    } else {
+                        replaceFragment(RegistrationFragment::class.java.toString())
+                    }
+                }
+            }
         }
-
+        catch (e: Exception){
+          Log.d("DBException", e.toString())
+        }
         setup_menu()
 
     }

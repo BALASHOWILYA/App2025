@@ -5,7 +5,7 @@ import com.example.myapplication.domain.repositories.userrepository.IGetUserRepo
 
 class GetUserUseCase(private val getUserRepository: IGetUserRepository ) {
 
-    suspend operator fun invoke(): User {
+    suspend operator fun invoke(): User? {
         return getUserRepository.getUser()
 
     }

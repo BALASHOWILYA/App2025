@@ -28,7 +28,7 @@ private const val ARG_PARAM4 = "ARG_PROFILE_PHOTO"
 class MUserProfileFragment : Fragment() {
 
 
-    private val getCourseViewModel: GetUserViewModel by viewModel<GetUserViewModel>()
+    private val getUserViewModel: GetUserViewModel by viewModel<GetUserViewModel>()
 
     private var param1: String? = null
     private var param2: String? = null
@@ -101,7 +101,7 @@ class MUserProfileFragment : Fragment() {
         // Если аргументы не были переданы — подгружаем из ViewModel
         if (param1 == null || param2 == null || param3 == null || param4 == null) {
             viewLifecycleOwner.lifecycleScope.launch {
-                getCourseViewModel.user.collectLatest { user ->
+                getUserViewModel.user.collectLatest { user ->
                     user?.let {
                         param1 = it.password
                         param2 = it.username
@@ -109,7 +109,7 @@ class MUserProfileFragment : Fragment() {
                         param4 = it.age
 
                         // Обновляем UI
-                        binding.profileAgeId.text = param1
+                        binding.profileAgeId.text = param4.toString()
                         binding.profileNameId.text = param2
                         binding.profileCurrentPhoneId.text = param3
 

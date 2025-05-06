@@ -14,7 +14,7 @@
         android:defaultValue="1"
         android:entries="@array/text_style"
         android:entryValues="@array/text_style"
-        android:dialogTitle="Выберите стиль для шрифта" />
+        android:dialogTitle="Выберите стиль для темы" />
 
 
 </PreferenceScreen>

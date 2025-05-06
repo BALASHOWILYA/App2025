@@ -13,7 +13,11 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="125dp"
+        android:background="?attr/colorPrimary"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        app:titleTextColor="@color/white"
         app:title="Курсы для всех"/>
 
     <androidx.fragment.app.FragmentContainerView

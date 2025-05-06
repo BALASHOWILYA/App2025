@@ -117,6 +117,7 @@ class RegistrationFragment : Fragment() {
                 val user: User = User( username = name,
                     password = password,
                     phoneNumber = phoneNumber,
+                    profilePhoto = R.drawable.course,
                     age = age.toInt())
                 Log.d("ButtenTag", user.toString())
 

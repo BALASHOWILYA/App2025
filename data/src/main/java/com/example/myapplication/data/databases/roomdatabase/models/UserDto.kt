@@ -10,5 +10,6 @@ data class UserDto(
     val username: String,
     val password: String,
     val phoneNumber: String,
+    val profilePhoto: Int,
     val age: Int
 )

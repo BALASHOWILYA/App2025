@@ -30,6 +30,7 @@
     <string name="profile">Профиль</string>
     <string name="my_information">Моя информация</string>
     <string name="settings">Настройки</string>
+    <string name="LogIn">Вход</string>
 
     <string-array name="text_style">
         <item>Светлая</item>

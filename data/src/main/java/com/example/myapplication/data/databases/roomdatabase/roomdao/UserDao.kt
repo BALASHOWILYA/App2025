@@ -1,6 +1,7 @@
 package com.example.myapplication.data.databases.roomdatabase.roomdao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -18,5 +19,7 @@ interface UserDao {
 
     @Query("SELECT * FROM users ORDER BY id DESC LIMIT 1")
     suspend fun getUser(): UserDto
+
+
 
 }

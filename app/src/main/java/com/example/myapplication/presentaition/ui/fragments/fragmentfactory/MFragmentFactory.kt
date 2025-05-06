@@ -7,6 +7,7 @@ import com.example.myapplication.presentaition.ui.fragments.courses.CourseFragme
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
 import com.example.myapplication.presentaition.ui.fragments.courses.CoursesFragment
+import com.example.myapplication.presentaition.ui.fragments.registration.LogINFragment
 import com.example.myapplication.presentaition.ui.fragments.settings.FragmentSettings
 
 class MFragmentFactory(): FragmentFactory() {
@@ -19,6 +20,7 @@ class MFragmentFactory(): FragmentFactory() {
             AddCourseFragment::class.java.toString() -> AddCourseFragment.newInstance()
             CourseFragment::class.java.toString() -> CourseFragment.newInstance()
             FragmentSettings::class.java.toString() -> FragmentSettings.newInstance()
+            LogINFragment::class.java.toString() -> LogINFragment.newInstance()
             else -> super.instantiate(classLoader, className)
         }
     }

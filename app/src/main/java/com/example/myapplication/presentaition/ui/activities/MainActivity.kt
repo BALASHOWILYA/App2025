@@ -32,6 +32,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private val getUserViewModel: GetUserViewModel by viewModel<GetUserViewModel>()
+    var menuResId: Int = com.example.myapplication.R.menu.menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportFragmentManager.fragmentFactory = MFragmentFactory()
@@ -62,9 +63,12 @@ class MainActivity : AppCompatActivity(){
 
         val menuHost: MenuHost = this
 
+
         menuHost.addMenuProvider(object: MenuProvider{
+
+
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(com.example.myapplication.R.menu.menu, menu)
+                menuInflater.inflate(menuResId, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -78,7 +82,7 @@ class MainActivity : AppCompatActivity(){
                         true
                     }
                     com.example.myapplication.R.id.nav_logout_id->{
-                        finish()
+                        menuResId = com.example.myapplication.R.menu.second_menu
                         true
                     }
                     else -> false

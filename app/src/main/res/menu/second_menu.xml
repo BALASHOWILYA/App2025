@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Секция: User Info -->
+    <group android:id="@+id/group_user_info">
+        <item
+            android:id="@+id/header_info"
+            android:title="@string/my_information"
+            android:icon="@drawable/baseline_account_box_24"
+            android:enabled="false"
+            app:showAsAction="never"/>
+
+        <item
+            android:id="@+id/nav_profile_id"
+            android:title="@string/profile"
+
+            android:iconTintMode="src_atop"
+            app:showAsAction="never"/>
+
+        <item
+            android:id="@+id/nav_settings_id"
+            android:title="@string/settings"
+            android:iconTintMode="src_atop"
+            app:showAsAction="never"/>
+    </group>
+
+    <!-- Секция: Actions -->
+    <group android:id="@+id/group_actions">
+        <item
+            android:id="@+id/nav_logout_id"
+            android:title="@string/LogIn"
+            android:iconTintMode="src_atop"
+            app:showAsAction="never"/>
+    </group>
+
+</menu>

@@ -37,9 +37,16 @@ android {
     viewBinding{
         enable = true
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
 }
 
 dependencies {
+
 
     implementation(project(":domain"))
     implementation(project(":data"))
@@ -59,6 +66,13 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.5.0")
     implementation("io.insert-koin:koin-test:3.5.0")
     implementation("androidx.preference:preference:1.1.1")
+
+    implementation("androidx.compose.material:material:1.5.4")
+    implementation("androidx.compose.compiler:compiler:1.5.3")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
+    implementation("androidx.compose.ui:ui-tooling:1.5.4")
+    implementation("androidx.activity:activity-compose:1.8.0")
+
 
     ksp("androidx.room:room-compiler:2.6.1")
 

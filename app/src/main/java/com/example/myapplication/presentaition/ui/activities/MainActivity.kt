@@ -20,6 +20,7 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.presentaition.ui.fragments.registration.RegistrationFragment
 import com.example.myapplication.presentaition.ui.fragments.fragmentfactory.MFragmentFactory
+import com.example.myapplication.presentaition.ui.fragments.registration.LogINFragment
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
 import com.example.myapplication.presentaition.ui.fragments.settings.FragmentSettings
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.GetUserViewModel
@@ -79,6 +80,10 @@ class MainActivity : AppCompatActivity(){
                     }
                     com.example.myapplication.R.id.nav_settings_id->{
                         replaceFragment(FragmentSettings::class.java.toString())
+                        true
+                    }
+                    R.id.nav_login_id ->{
+                        replaceFragment(LogINFragment::class.java.toString())
                         true
                     }
                     com.example.myapplication.R.id.nav_logout_id->{

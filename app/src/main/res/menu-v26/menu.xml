@@ -27,6 +27,12 @@
 
     <!-- Секция: Actions -->
     <group android:id="@+id/group_actions">
+
+        <item
+            android:id="@+id/nav_login_id"
+            android:title="Вход"
+            android:iconTintMode="src_atop"
+            app:showAsAction="never"/>
         <item
             android:id="@+id/nav_logout_id"
             android:title="@string/logout"

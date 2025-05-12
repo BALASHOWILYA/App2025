@@ -16,7 +16,7 @@ class LogINFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_log_i_n, container, false)
+        return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
 
     companion object {

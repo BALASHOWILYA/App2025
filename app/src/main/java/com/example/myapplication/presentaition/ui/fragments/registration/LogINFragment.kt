@@ -5,25 +5,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.viewModels
 import com.example.myapplication.R
+import com.example.myapplication.presentaition.ui.screens.LoginScreen
+import com.example.myapplication.presentaition.viewmodels.LogInViewModel
 
 
 class LogINFragment : Fragment() {
 
+    private lateinit var composeView: ComposeView
+    private val viewModel: LogInViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_log_in, container, false)
+        return ComposeView(requireContext()).also {
+            composeView = it
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        composeView.setContent {
+            val state by viewModel.state.collectAsState()
+            LoginScreen(
+                state = state,
+                onNextClick = {
+                    replaceFragment(MUserProfileFragment::class.java.name)
+                }
+            )
+        }
+    }
+
+    private fun replaceFragment(fragmentName: String) {
+        // Проверка, что fragmentName не пустой
+        if (fragmentName.isEmpty()) {
+            throw IllegalArgumentException("Fragment name cannot be empty")
+        }
+
+        try {
+            // Создание фрагмента
+            val fragment = requireActivity().supportFragmentManager.fragmentFactory
+                .instantiate(requireActivity().classLoader, fragmentName)
+
+            // Замена фрагмента
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_id, fragment)
+                .addToBackStack(null) // Добавление транзакции в back stack
+                .commitAllowingStateLoss() // Подтверждение транзакции
+        } catch (e: Fragment.InstantiationException) {
+            // Обработка ошибки
+            e.printStackTrace()
+            throw RuntimeException("Failed to instantiate fragment: $fragmentName", e)
+        }
     }
 
     companion object {
-
         @JvmStatic
-        fun newInstance() =
-            LogINFragment().apply {
-            }
+        fun newInstance() = LogINFragment()
     }
 }

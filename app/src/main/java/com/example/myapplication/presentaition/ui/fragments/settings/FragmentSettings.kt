@@ -13,6 +13,8 @@ class FragmentSettings: PreferenceFragmentCompat() {
        addPreferencesFromResource(com.example.myapplication.R.xml.settings_preferences)
     }
 
+
+
     companion object {
         @JvmStatic
         fun newInstance() = FragmentSettings()

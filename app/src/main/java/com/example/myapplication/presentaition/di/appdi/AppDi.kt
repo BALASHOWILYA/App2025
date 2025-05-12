@@ -1,5 +1,6 @@
 package com.example.myapplication.presentaition.di.appdi
 
+import com.example.myapplication.presentaition.viewmodels.LogInViewModel
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
@@ -38,5 +39,9 @@ val appModule = module {
         GetCourseViewModel(
             getCoursesUseCase = get()
         )
+    }
+
+    viewModel<LogInViewModel>{
+        LogInViewModel()
     }
 }

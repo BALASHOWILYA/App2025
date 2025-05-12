@@ -12,7 +12,7 @@ class AddUserRepositoryImpl(private val database: AppRoomDatabase):
     private  val userDao = database.userDao()
 
     override suspend fun addUser(user: com.example.myapplication.domain.models.User) {
-        userDao.insertUser(UserDto(username = user.username, password = user.password, age = user.age, phoneNumber = user.phoneNumber))
+        userDao.insertUser(UserDto(username = user.username, password = user.password, age = user.age, profilePhoto = user.profilePhoto, phoneNumber = user.phoneNumber))
         Log.d("add","added successful")
     }
 

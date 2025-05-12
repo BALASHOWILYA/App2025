@@ -80,6 +80,7 @@ class RegistrationFragment : Fragment() {
                 putString("ARG_PHONE_NUMBER_STRING", user.phoneNumber)
                 putString("ARG_AGE_STRING", user.age.toString())
                 putInt("ARG_PROFILE_PHOTO", com.example.myapplication.R.drawable.course)
+
                 // Add other data types as needed
             }
 
@@ -117,6 +118,7 @@ class RegistrationFragment : Fragment() {
                 val user: User = User( username = name,
                     password = password,
                     phoneNumber = phoneNumber,
+                    profilePhoto = R.drawable.course,
                     age = age.toInt())
                 Log.d("ButtenTag", user.toString())
 

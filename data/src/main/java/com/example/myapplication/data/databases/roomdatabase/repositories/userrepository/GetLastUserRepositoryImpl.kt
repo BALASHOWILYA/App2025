@@ -13,7 +13,7 @@ class GetLastUserRepositoryImpl(private val database: AppRoomDatabase): IGetLast
     override suspend fun getUser(): User? {
         try{
             val userDto = userDao.getUser()
-            return User(userDto.username,userDto.password,  userDto.phoneNumber, userDto.age)}
+            return User(userDto.username,userDto.password,  userDto.phoneNumber, userDto.profilePhoto, userDto.age)}
         catch (e: Exception){
             Log.d("DBException", e.toString())
             return null

@@ -19,6 +19,7 @@ class GetUsersRepositoryImpl(private val database: AppRoomDatabase):
                 username = dto.username,
                 password = dto.password,
                 age = dto.age,
+                profilePhoto = dto.profilePhoto,
                 phoneNumber = dto.phoneNumber
             )
         }

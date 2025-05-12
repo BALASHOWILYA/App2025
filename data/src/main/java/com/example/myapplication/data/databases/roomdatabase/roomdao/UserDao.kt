@@ -17,7 +17,7 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userDto: UserDto)
 
-    @Query("SELECT * FROM users ORDER BY id DESC LIMIT 1")
+    @Query("SELECT * FROM users WHERE  id =(SELECT MAX(id) FROM users)")
     suspend fun getUser(): UserDto
 
 

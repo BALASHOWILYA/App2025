@@ -7,9 +7,11 @@ import com.example.myapplication.data.databases.roomdatabase.repositories.studen
 import com.example.myapplication.data.databases.roomdatabase.repositories.studentrepository.GetStudentsRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.teacherrepository.AddTeacherRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.teacherrepository.GetTeachersRepositoryImpl
+import com.example.myapplication.data.databases.roomdatabase.repositories.userAccountRepository.InterUserAccountRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.AddUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetLastUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetUsersRepositoryImpl
+import com.example.myapplication.domain.repositories.authenticationrepository.IInterUserAccountRepository
 import com.example.myapplication.domain.repositories.courserepository.IAddCourseRepository
 import com.example.myapplication.domain.repositories.courserepository.IGetCourseRepository
 import com.example.myapplication.domain.repositories.studentrepository.IAddStudentRepository
@@ -19,8 +21,6 @@ import com.example.myapplication.domain.repositories.teacherrepository.IGetTeach
 import com.example.myapplication.domain.repositories.userrepository.IAddUserRepository
 import com.example.myapplication.domain.repositories.userrepository.IGetLastUserRepository
 import com.example.myapplication.domain.repositories.userrepository.IGetUsersRepository
-import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 
@@ -40,6 +40,10 @@ val dataModule = module {
 
     single<IAddUserRepository> {
         AddUserRepositoryImpl(database = get())
+    }
+
+    single<IInterUserAccountRepository>{
+        InterUserAccountRepositoryImpl()
     }
 
     single<IGetCourseRepository> {

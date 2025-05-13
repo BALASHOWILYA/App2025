@@ -36,6 +36,8 @@ class LogINFragment : Fragment() {
             val state by viewModel.state.collectAsState()
             LoginScreen(
                 state = state,
+                onPasswordChange =  { viewModel.onPasswordChange(it) } ,
+                onPhoneNumberChange =  { viewModel.onPhoneNumberChange(it) } ,
                 onNextClick = {
                     replaceFragment(MUserProfileFragment::class.java.name)
                 }

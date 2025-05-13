@@ -1,6 +1,7 @@
 package com.example.myapplication.presentaition.di.domaindi
 
 import com.example.myapplication.domain.repositories.userrepository.IAddUserRepository
+import com.example.myapplication.domain.usecases.authenticationusecase.InterUserAccountUseCase
 import com.example.myapplication.domain.usecases.courseusecase.AddCourseUseCase
 import com.example.myapplication.domain.usecases.courseusecase.GetCoursesUseCase
 import com.example.myapplication.domain.usecases.studentusecase.AddStudentUseCase
@@ -25,6 +26,10 @@ val domainModule = module {
 
     factory<GetUserUseCase> {
         GetUserUseCase(getLastUserRepository = get())
+    }
+
+    factory<InterUserAccountUseCase> {
+        InterUserAccountUseCase(interUserAccountRepository = get())
     }
 
     factory<GetTeachersUseCase>{

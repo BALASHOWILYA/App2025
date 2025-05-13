@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.domain.models.User
 import com.example.myapplication.domain.states.UserLoginState
 import com.example.myapplication.domain.usecases.authenticationusecase.InterUserAccountUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -19,6 +21,9 @@ class LogInViewModel(private val interUserAccountUseCase: InterUserAccountUseCas
     private val _state = MutableStateFlow(LoginState())
     val state = _state.asStateFlow()
 
+    private val _users = MutableStateFlow<com.example.myapplication.domain.models.User>(User())
+    val users: StateFlow<com.example.myapplication.domain.models.User> = _users
+
     fun onPhoneNumberChange(phoneNumber: String){
         _stateLogin = _stateLogin.copy(phoneNumber = phoneNumber)
     }
@@ -29,7 +34,10 @@ class LogInViewModel(private val interUserAccountUseCase: InterUserAccountUseCas
 
     private fun checkUserLogin(userLoginState: UserLoginState) = viewModelScope.launch {
         if(_stateLogin.phoneNumber != "" && _stateLogin.password != ""){
-            interUserAccountUseCase.invoke(UserLoginState(_stateLogin.phoneNumber, _stateLogin.password))
+            val user = interUserAccountUseCase.invoke(UserLoginState(_stateLogin.phoneNumber, _stateLogin.password))
+            if( user != null){
+                _users.value= user
+            }
         }
 
     }

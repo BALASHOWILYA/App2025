@@ -6,6 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.presentaition.application.MyApplication
@@ -13,6 +18,8 @@ import com.example.myapplication.databinding.FragmentAddCourseBinding
 import com.example.myapplication.databinding.FragmentCoursesBinding
 import com.example.myapplication.domain.models.Course
 import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
+import com.example.myapplication.presentaition.ui.screens.AddCourseScreen
+import com.example.myapplication.presentaition.ui.screens.LoginScreen
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,50 +27,30 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddCourseFragment : Fragment() {
 
-    private var _binding: FragmentAddCourseBinding? = null
-    private val binding get() = _binding!!
-    private val addCourseViewModel: AddCourseViewModel by viewModel<AddCourseViewModel>()
+    private lateinit var composeView: ComposeView
+    private val addCourseViewModel: AddCourseViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentAddCourseBinding.inflate(inflater, container, false)
-        return binding.root
+        return ComposeView(requireContext()).also {
+
+            composeView = it
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-
-        binding.addCourseButtonId.setOnClickListener {
-
-            val name = binding.editNameCourseId.text.toString()
-            val intro = binding.editIntroCourseId.text.toString()
-            val description = binding.editDescriptionCourseId.text.toString()
-
-
-            if(name.isNotEmpty() && intro.isNotEmpty() && description.isNotEmpty()){
-
-                addCourseViewModel.addCourse(Course(
-                        coursePicture = R.drawable.course,
-                        name = name,
-                        intro = intro,
-                        description = description
-                    )
-                )
-                replaceFragment(MUserProfileFragment::class.java.name) // Используем .name для получения полного имени класса
-            }
-
+        composeView.setContent {
+            AddCourseScreen (
+                addCourseViewModel = addCourseViewModel,
+                onNextClick = {}
+            )
         }
     }
 
@@ -107,5 +94,14 @@ class AddCourseFragment : Fragment() {
 
                 }
             }
+    }
+
+    @Preview
+    @Composable
+    fun AddCourseScreenPreview(){
+        AddCourseScreen (
+            addCourseViewModel = addCourseViewModel,
+            onNextClick = {}
+        )
     }
 }

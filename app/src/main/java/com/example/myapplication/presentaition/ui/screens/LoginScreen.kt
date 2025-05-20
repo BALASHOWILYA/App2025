@@ -11,17 +11,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.domain.states.UserLoginState
+import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
 import com.example.myapplication.presentaition.viewmodels.LogInViewModel
 
 
 @Composable
 fun LoginScreen(
-    state: LogInViewModel.LoginState,
-    onPhoneNumberChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit,
     onNextClick: () -> Unit
 
 ){
@@ -36,32 +35,27 @@ fun LoginScreen(
     ){
 
         Text(text= "Вход в аккаунт")
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         OutlinedTextField(
             value = userLoginState.phoneNumber,
             label = { Text(text= "Номер телефона")},
             placeholder = { Text(text= "Введите номер телефона:")},
-            onValueChange = { onPhoneNumberChange(it)}
+            onValueChange = { }
 
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         OutlinedTextField(
             value = userLoginState.password,
             label = { Text(text= "Пароль")},
             placeholder = { Text(text= "Введите пароль:")},
-            onValueChange = { onPasswordChange(it)}
+            onValueChange = { }
 
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         Button(onClick = onNextClick){
             Text("Вход")
         }
     }
 
 }
+
+
+
+

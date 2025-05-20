@@ -43,7 +43,7 @@ val dataModule = module {
     }
 
     single<IInterUserAccountRepository>{
-        InterUserAccountRepositoryImpl()
+        InterUserAccountRepositoryImpl(database = get())
     }
 
     single<IGetCourseRepository> {

@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.presentaition.ui.screens.LoginScreen
@@ -33,17 +35,16 @@ class LogINFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         composeView.setContent {
-            val state by viewModel.state.collectAsState()
             LoginScreen(
-                state = state,
-                onPasswordChange =  { viewModel.onPasswordChange(it) } ,
-                onPhoneNumberChange =  { viewModel.onPhoneNumberChange(it) } ,
                 onNextClick = {
                     replaceFragment(MUserProfileFragment::class.java.name)
                 }
             )
         }
     }
+
+
+
 
     private fun replaceFragment(fragmentName: String) {
         // Проверка, что fragmentName не пустой
@@ -72,5 +73,15 @@ class LogINFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = LogINFragment()
+    }
+
+    @Preview
+    @Composable
+    fun LoginScreenPreview(){
+        LoginScreen(
+            onNextClick = {
+                replaceFragment(MUserProfileFragment::class.java.name)
+            }
+        )
     }
 }

@@ -77,7 +77,11 @@ fun AddCourseScreen(
 
 
         }){
-            Text("Вход")
+            Text("Сохранить данные")
+        }
+
+        Button(onClick = onNextClick) {
+            Text("Перейти в профиль")
         }
     }
 

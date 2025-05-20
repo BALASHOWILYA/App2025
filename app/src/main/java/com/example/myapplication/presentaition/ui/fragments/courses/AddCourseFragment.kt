@@ -49,7 +49,9 @@ class AddCourseFragment : Fragment() {
         composeView.setContent {
             AddCourseScreen (
                 addCourseViewModel = addCourseViewModel,
-                onNextClick = {}
+                onNextClick = {
+                    replaceFragment(MUserProfileFragment::class.java.name)
+                }
             )
         }
     }

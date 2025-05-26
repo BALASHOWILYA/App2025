@@ -6,20 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.presentaition.ui.screens.LoginScreen
-import com.example.myapplication.presentaition.viewmodels.LogInViewModel
+import com.example.myapplication.presentaition.viewmodels.CheckUserViewModel
 
 
 class LogINFragment : Fragment() {
 
     private lateinit var composeView: ComposeView
-    private val viewModel: LogInViewModel by viewModels()
+    private val viewModel: CheckUserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

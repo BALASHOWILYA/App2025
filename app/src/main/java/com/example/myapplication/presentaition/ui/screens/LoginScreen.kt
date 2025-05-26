@@ -9,23 +9,26 @@ import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.myapplication.domain.states.UserLoginState
-import com.example.myapplication.presentaition.ui.fragments.registration.MUserProfileFragment
-import com.example.myapplication.presentaition.viewmodels.LogInViewModel
+import com.example.myapplication.R
+import com.example.myapplication.domain.models.Course
+import com.example.myapplication.domain.models.User
+import com.example.myapplication.presentaition.viewmodels.CheckUserViewModel
+import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
 
 
 @Composable
 fun LoginScreen(
+    checkUserViewModel: CheckUserViewModel,
     onNextClick: () -> Unit
 
 ){
 
-    val userLoginState: UserLoginState = UserLoginState()
+    val phoneNumber = remember { mutableStateOf("") }
+    val password =  remember { mutableStateOf("") }
 
 
     Column(
@@ -36,19 +39,35 @@ fun LoginScreen(
 
         Text(text= "Вход в аккаунт")
         OutlinedTextField(
-            value = userLoginState.phoneNumber,
+            value = phoneNumber.value,
             label = { Text(text= "Номер телефона")},
             placeholder = { Text(text= "Введите номер телефона:")},
-            onValueChange = { }
+            onValueChange = { phoneNumber.value = it }
 
         )
         OutlinedTextField(
-            value = userLoginState.password,
+            value = password.value,
             label = { Text(text= "Пароль")},
             placeholder = { Text(text= "Введите пароль:")},
-            onValueChange = { }
+            onValueChange = { password.value = it }
 
         )
+        Button(onClick = {
+
+            if(phoneNumber.value.isNotEmpty() && password.value.isNotEmpty()){
+
+                checkUserViewModel.checkUser(
+                    User(
+                        phoneNumber = phoneNumber.value,
+                        password = password.value
+                    )
+                )
+            }
+
+
+        }){
+            Text("Сохранить данные")
+        }
         Button(onClick = onNextClick){
             Text("Вход")
         }

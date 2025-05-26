@@ -1,11 +1,11 @@
 package com.example.myapplication.data.databases.roomdatabase.roomdao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.myapplication.data.databases.roomdatabase.models.UserDto
+import com.example.myapplication.domain.models.User
 
 
 @Dao
@@ -19,6 +19,12 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE  id =(SELECT MAX(id) FROM users)")
     suspend fun getUser(): UserDto
+
+    @Query("SELECT * FROM users WHERE phoneNumber = :phoneNumber AND password = :password")
+    fun findUserByPhoneNumberAndPassword(
+        @Param("phoneNumber") phoneNumber: String,
+        @Param("password") password: String
+    ): UserDto?
 
 
 

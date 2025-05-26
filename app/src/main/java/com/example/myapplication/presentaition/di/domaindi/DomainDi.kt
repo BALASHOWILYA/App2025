@@ -9,6 +9,7 @@ import com.example.myapplication.domain.usecases.studentusecase.GetStudentsUseCa
 import com.example.myapplication.domain.usecases.teacherusecase.AddTeacherUseCase
 import com.example.myapplication.domain.usecases.teacherusecase.GetTeachersUseCase
 import com.example.myapplication.domain.usecases.userusecase.AddUserUseCase
+import com.example.myapplication.domain.usecases.userusecase.CheckUserUseCase
 import com.example.myapplication.domain.usecases.userusecase.GetUserUseCase
 import com.example.myapplication.domain.usecases.userusecase.GetUsersUseCase
 import org.koin.dsl.factory
@@ -26,6 +27,10 @@ val domainModule = module {
 
     factory<GetUserUseCase> {
         GetUserUseCase(getLastUserRepository = get())
+    }
+
+    factory<CheckUserUseCase> {
+        CheckUserUseCase(checkUserRepository = get())
     }
 
     factory<InterUserAccountUseCase> {

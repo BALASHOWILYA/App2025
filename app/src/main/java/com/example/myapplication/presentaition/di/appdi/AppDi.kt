@@ -1,6 +1,6 @@
 package com.example.myapplication.presentaition.di.appdi
 
-import com.example.myapplication.presentaition.viewmodels.CheckUserViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.CheckUserViewModel
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.courseviewmodel.GetCourseViewModel
 import com.example.myapplication.presentaition.viewmodels.userviewmodel.AddUserViewModel
@@ -42,6 +42,8 @@ val appModule = module {
     }
 
     viewModel<CheckUserViewModel>{
-        CheckUserViewModel(interUserAccountUseCase = get())
+        CheckUserViewModel(
+            checkUserUseCase = get()
+        )
     }
 }

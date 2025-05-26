@@ -2,9 +2,7 @@ package com.example.myapplication.presentaition.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -13,11 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.myapplication.R
-import com.example.myapplication.domain.models.Course
 import com.example.myapplication.domain.models.User
-import com.example.myapplication.presentaition.viewmodels.CheckUserViewModel
-import com.example.myapplication.presentaition.viewmodels.courseviewmodel.AddCourseViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.CheckUserViewModel
 
 
 @Composable

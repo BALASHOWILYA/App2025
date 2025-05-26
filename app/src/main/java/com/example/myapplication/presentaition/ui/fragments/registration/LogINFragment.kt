@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.presentaition.ui.screens.LoginScreen
-import com.example.myapplication.presentaition.viewmodels.CheckUserViewModel
+import com.example.myapplication.presentaition.viewmodels.userviewmodel.CheckUserViewModel
 
 
 class LogINFragment : Fragment() {
@@ -34,6 +34,7 @@ class LogINFragment : Fragment() {
 
         composeView.setContent {
             LoginScreen(
+                checkUserViewModel = viewModel,
                 onNextClick = {
                     replaceFragment(MUserProfileFragment::class.java.name)
                 }
@@ -77,6 +78,7 @@ class LogINFragment : Fragment() {
     @Composable
     fun LoginScreenPreview(){
         LoginScreen(
+            checkUserViewModel = viewModel,
             onNextClick = {
                 replaceFragment(MUserProfileFragment::class.java.name)
             }

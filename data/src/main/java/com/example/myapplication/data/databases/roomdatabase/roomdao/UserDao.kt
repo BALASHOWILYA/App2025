@@ -22,8 +22,8 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE phoneNumber = :phoneNumber AND password = :password")
     fun findUserByPhoneNumberAndPassword(
-        @Param("phoneNumber") phoneNumber: String,
-        @Param("password") password: String
+        phoneNumber: String,
+        password: String
     ): UserDto?
 
 

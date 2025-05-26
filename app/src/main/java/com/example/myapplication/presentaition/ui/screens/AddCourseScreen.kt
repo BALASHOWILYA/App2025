@@ -26,7 +26,6 @@ fun AddCourseScreen(
     onNextClick: () -> Unit
 ){
 
-    val context = LocalContext.current
     val name = remember { mutableStateOf("") }
     val intro =  remember { mutableStateOf("") }
     val description =  remember { mutableStateOf("") }

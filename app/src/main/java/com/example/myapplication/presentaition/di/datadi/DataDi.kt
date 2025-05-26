@@ -9,6 +9,7 @@ import com.example.myapplication.data.databases.roomdatabase.repositories.teache
 import com.example.myapplication.data.databases.roomdatabase.repositories.teacherrepository.GetTeachersRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userAccountRepository.InterUserAccountRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.AddUserRepositoryImpl
+import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.CheckUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetLastUserRepositoryImpl
 import com.example.myapplication.data.databases.roomdatabase.repositories.userrepository.GetUsersRepositoryImpl
 import com.example.myapplication.domain.repositories.authenticationrepository.IInterUserAccountRepository
@@ -19,6 +20,7 @@ import com.example.myapplication.domain.repositories.studentrepository.IGetStude
 import com.example.myapplication.domain.repositories.teacherrepository.IAddTeacherRepository
 import com.example.myapplication.domain.repositories.teacherrepository.IGetTeachersRepository
 import com.example.myapplication.domain.repositories.userrepository.IAddUserRepository
+import com.example.myapplication.domain.repositories.userrepository.ICheckUserRepository
 import com.example.myapplication.domain.repositories.userrepository.IGetLastUserRepository
 import com.example.myapplication.domain.repositories.userrepository.IGetUsersRepository
 import org.koin.dsl.module
@@ -36,6 +38,10 @@ val dataModule = module {
 
     single<IGetLastUserRepository> {
         GetLastUserRepositoryImpl(database = get())
+    }
+
+    single<ICheckUserRepository> {
+        CheckUserRepositoryImpl(database = get())
     }
 
     single<IAddUserRepository> {

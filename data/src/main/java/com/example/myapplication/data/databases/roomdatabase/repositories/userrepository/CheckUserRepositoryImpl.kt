@@ -10,7 +10,7 @@ class CheckUserRepositoryImpl(private val database: AppRoomDatabase): ICheckUser
 
     private val userDao = database.userDao()
 
-    override suspend fun checkUser(user: User) {
+    override suspend fun checkUser(user: User): User? {
 
         try {
             val password: String = user.password
@@ -19,8 +19,8 @@ class CheckUserRepositoryImpl(private val database: AppRoomDatabase): ICheckUser
                 phoneNumber = phoneNumber,
                 password = password
             )
-            if(phoneNumber == user!!.phoneNumber && password == user.password ){
-                return User(userDto.username,userDto.password,  userDto.phoneNumber, userDto.profilePhoto, userDto.age)
+            if(phoneNumber == user!!.phoneNumber && password == user!!.password ){
+                return User(userDto!!.username,userDto.password,  userDto.phoneNumber, userDto.profilePhoto, userDto.age)
             }else{
                 return null
             }
